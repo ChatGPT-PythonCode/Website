@@ -415,66 +415,73 @@ h2 span {
     margin-bottom: 12px;
 }
 
-/* ---------------------------
-   LOL ANIMATED HERO LETTERS
----------------------------- */
-.lol-wrapper {
+/* ----------------------------------
+   HACKER LOGO “LULS”
+----------------------------------- */
+
+.luls-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 18px;
+    color: #b06cff;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 40px auto;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 60px;
-    margin-top: 40px;
+    gap: 20px;
+
+    /* Base glow */
+    text-shadow:
+        0 0 12px #b06cff,
+        0 0 20px #9a4cff,
+        0 0 40px #7c3bff;
+    
+    animation: logoPulse 3s infinite ease-in-out;
 }
 
-/* Base Letter Frame */
-.lol-letter {
-    width: 110px;
-    height: 180px;
-    border-radius: 22px;
-    border: 6px solid #b06cff;
-    box-shadow: 0 0 25px #b06cff88, inset 0 0 12px #b06cff55;
-    position: relative;
-    animation: pulse 3s infinite ease-in-out;
+/* Individual letter flicker */
+.luls-logo span {
+    display: inline-block;
+    animation: glitchFlicker 2.5s infinite steps(2, end);
 }
 
-/* TRUE L SHAPES — remove sides */
-.l-left {
-    border-right: none;
-    border-top: none;
+/* Random per-letter delays for real hacker feel */
+.luls-logo span:nth-child(1) { animation-delay: 0.1s; }
+.luls-logo span:nth-child(2) { animation-delay: 0.3s; }
+.luls-logo span:nth-child(3) { animation-delay: 0.5s; }
+.luls-logo span:nth-child(4) { animation-delay: 0.2s; }
+
+/* Pulse breathing glow */
+@keyframes logoPulse {
+    0% { text-shadow: 0 0 10px #b06cff, 0 0 30px #7c3bff; }
+    50% { text-shadow: 0 0 20px #d0a6ff, 0 0 50px #b06cff; }
+    100% { text-shadow: 0 0 10px #b06cff, 0 0 30px #7c3bff; }
 }
 
-.l-right {
-    border-left: none;
-    border-top: none;
-}
-
-/* Optional subtle bottom stroke */
-.lol-letter::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 6px;
-    width: 80px;
-    background: #b06cff;
-    box-shadow: 0 0 15px #b06cffaa;
-    border-radius: 6px;
-}
-
-/* Cube stays centered */
-.hacker-cube {
-    width: 160px;
-    height: 160px;
-    border-radius: 22px;
-    background: linear-gradient(145deg, #7b43ff, #b06cff);
-    box-shadow: 0 0 50px #b06cffaa;
-    animation: float 4s ease-in-out infinite, pulse 4s ease-in-out infinite;
+/* Hacker flicker scan/glitch */
+@keyframes glitchFlicker {
+    0% { opacity: 1; transform: translate(0,0); }
+    10% { opacity: 0.85; transform: translate(-1px,0); }
+    20% { opacity: 1; transform: translate(0,0); }
+    30% { opacity: 0.7; transform: translate(1px,-1px); }
+    40% { opacity: 1; }
+    50% { opacity: 0.9; transform: translate(-1px,1px); }
+    60% { opacity: 1; transform: translate(0,0); }
+    70% { opacity: 0.8; }
+    80% { opacity: 1; }
+    90% { opacity: 0.95; }
+    100% { opacity: 1; }
 }
 
 /* Mobile scaling */
-@media (max-width: 700px) {
-    .lol-wrapper {
-        gap: 25px;
-        transform: scale(0.7);
+@media (max-width: 600px) {
+    .luls-logo {
+        font-size: 3rem;
+        letter-spacing: 10px;
+        gap: 10px;
+        margin-bottom: 20px;
     }
 }
+
