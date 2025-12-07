@@ -422,56 +422,59 @@ h2 span {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 45px;
+    gap: 60px;
     margin-top: 40px;
 }
 
-/* Base glowing border */
+/* Base Letter Frame */
 .lol-letter {
-    width: 90px;
-    height: 160px;
-    border-radius: 18px;
-    border: 4px solid #b06cff;
-    box-shadow: 0 0 25px #b06cff88;
+    width: 110px;
+    height: 180px;
+    border-radius: 22px;
+    border: 6px solid #b06cff;
+    box-shadow: 0 0 25px #b06cff88, inset 0 0 12px #b06cff55;
     position: relative;
     animation: pulse 3s infinite ease-in-out;
 }
 
-/* Make left L shape */
+/* TRUE L SHAPES — remove sides */
 .l-left {
-    border-top: none;     /* remove top */
-    border-right: none;   /* remove right side */
+    border-right: none;
+    border-top: none;
 }
 
-/* Make right L shape (mirrored) */
 .l-right {
-    border-top: none;     /* remove top */
-    border-left: none;    /* remove left side */
+    border-left: none;
+    border-top: none;
 }
 
-/* Extra bottom inner stroke for both L’s */
+/* Optional subtle bottom stroke */
 .lol-letter::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 70px;
-    height: 4px;
+    height: 6px;
+    width: 80px;
     background: #b06cff;
-    border-radius: 4px;
-    box-shadow: 0 0 15px #b06cff88;
+    box-shadow: 0 0 15px #b06cffaa;
+    border-radius: 6px;
 }
 
-/* Center cube overrides */
+/* Cube stays centered */
 .hacker-cube {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #7b43ff, #b06cff);
+    box-shadow: 0 0 50px #b06cffaa;
+    animation: float 4s ease-in-out infinite, pulse 4s ease-in-out infinite;
 }
 
 /* Mobile scaling */
 @media (max-width: 700px) {
     .lol-wrapper {
-        gap: 20px;
-        transform: scale(0.65);
+        gap: 25px;
+        transform: scale(0.7);
     }
 }
