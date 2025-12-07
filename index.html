@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>luls.lol – Tech Support, Programs, Digital Tools</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Tailwind for grids & utilities -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>luls.lol - Tech Support & Hacker Tools</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- CYBER GRID BACKGROUND -->
+<!-- Cyber Background -->
 <div class="cyber-grid"></div>
 
 <!-- HEADER -->
@@ -21,176 +16,248 @@
     <div class="logo">luls<span>.lol</span></div>
 
     <nav class="nav">
-        <a href="#hero">Home</a>
-        <a href="#programs">Programs</a>
-        <a href="#outlet">Digital Outlet</a>
+        <a href="#home">Home</a>
+        <a href="#templates">Templates</a>
+        <a href="#services">Services</a>
+        <a href="#tools">Tools</a>
         <a href="#downloads">Downloads</a>
-        <a href="#contact">Contact</a>
+        <a href="#outlet">Digital Outlet</a>
+        <a href="#about">About</a>
     </nav>
 
-    <div class="hamburger" id="hamburger">
+    <a class="cta-btn" href="#downloads">Get Tools</a>
+
+    <div class="hamburger" onclick="toggleMenu()">
         <div></div><div></div><div></div>
     </div>
 </header>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
-    <a href="#hero">Home</a>
-    <a href="#programs">Programs</a>
-    <a href="#outlet">Digital Outlet</a>
-    <a href="#downloads">Downloads</a>
-    <a href="#contact">Contact</a>
+    <a onclick="closeMenu()" href="#home">Home</a>
+    <a onclick="closeMenu()" href="#templates">Templates</a>
+    <a onclick="closeMenu()" href="#services">Services</a>
+    <a onclick="closeMenu()" href="#tools">Tools</a>
+    <a onclick="closeMenu()" href="#downloads">Downloads</a>
+    <a onclick="closeMenu()" href="#outlet">Digital Outlet</a>
+    <a onclick="closeMenu()" href="#about">About</a>
 </div>
 
 <!-- HERO -->
-<section id="hero" class="hero">
+<section id="home" class="hero">
     <div class="hero-content">
-        <h1>Tech Support, Digital Tools, & Custom Programs</h1>
-        <p>
-            Cyber-themed utilities, system tools, software, optimizers, templates,  
-            and more—built for performance and reliability.
-        </p>
+        <h1>Fixing, Protecting & Powering Your <span>Digital Life</span></h1>
+        <p>Elite-level tech support, virus removal, performance tuning, and custom hacker tools.</p>
 
         <div class="hero-buttons">
-            <a href="#programs" class="btn primary">Programs</a>
-            <a href="#outlet" class="btn secondary">Digital Outlet</a>
+            <a href="#downloads" class="btn primary">Get Tools</a>
+            <a href="#tools" class="btn secondary">Explore Dashboard</a>
         </div>
     </div>
 
     <div class="hero-graphic">
         <div class="glow-circle"></div>
-        <div class="hacker-cube"></div>
+        <div class="cube hacker-cube"></div>
     </div>
 </section>
 
-<!-- PROGRAMS (REPLACES HACKER DASHBOARD) -->
-<section id="programs" class="section">
-    <h2>Utilities & <span>Programs</span></h2>
-    <p class="section-sub">Professional-grade tools, diagnostics, optimizers & scripts.</p>
+<!-- TEMPLATES -->
+<section id="templates" class="templates section">
+    <h2>Website <span>Templates</span></h2>
+    <p class="section-sub">Cyberpunk, hacker-themed, and modern designs.</p>
 
-    <div class="programs-grid">
-        <div class="program-card">
-            <h3>System Optimizer</h3>
-            <p>Cleanup, tuning scripts, and performance upgrades.</p>
-        </div>
-
-        <div class="program-card">
-            <h3>Automation Tools</h3>
-            <p>Workflow automation and task simplification utilities.</p>
-        </div>
-
-        <div class="program-card">
-            <h3>Diagnostics Suite</h3>
-            <p>Scan, detect, and repair common system issues.</p>
-        </div>
-
-        <div class="program-card">
-            <h3>Custom Utilities</h3>
-            <p>Gaming tools, mod helpers, batch utilities & more.</p>
-        </div>
+    <div class="templates-grid">
+        <div class="template-card"><h3>Cybersecurity</h3><p>Dark neon theme.</p></div>
+        <div class="template-card"><h3>Terminal</h3><p>Green terminal interface.</p></div>
+        <div class="template-card"><h3>Gaming OS</h3><p>Fast, bold, high-contrast.</p></div>
     </div>
 </section>
 
-<!-- DIGITAL OUTLET (AUTO LOAD FROM GITHUB JSON) -->
-<section id="outlet" class="section downloads-section">
-    <h2>Digital <span>Outlet</span></h2>
-    <p class="section-sub">Auto-populated tools from your GitHub portfolio.</p>
+<!-- SERVICES -->
+<section id="services" class="services section">
+    <h2>Our <span>Services</span></h2>
+    <p class="section-sub">Tech repair, cyber cleanup, automation, and more.</p>
 
-    <input id="outlet-search" class="download-search" placeholder="Search products...">
+    <div class="services-grid">
+        <div class="card"><h3>🛠️ Computer Repair</h3><p>Fixes, optimization, diagnostics.</p></div>
+        <div class="card"><h3>🦠 Virus Removal</h3><p>Deep cleaning & protection.</p></div>
+        <div class="card"><h3>📡 Remote Support</h3><p>Instant remote help.</p></div>
+        <div class="card"><h3>⚙ Custom Software</h3><p>Automation & bots.</p></div>
+        <div class="card"><h3>🎮 Game Tools</h3><p>Tweaks, FPS boosters.</p></div>
+    </div>
+</section>
 
-    <div id="outlet-status" class="text-center text-gray-400"></div>
+<!-- TOOLS -->
+<section id="tools" class="tools-dashboard section">
+    <h2>Hacker Tools <span>Dashboard</span></h2>
+    <p class="section-sub">Interactive cyber grid.</p>
 
-    <div id="outlet-grid"></div>
+    <div class="dashboard-grid">
+        <div class="tool-panel"><h3>LulsOptimizer</h3><p>PC speed boost.</p><button class="hack-btn">Launch</button></div>
+        <div class="tool-panel"><h3>LulsBot Suite</h3><p>Automation bots.</p><button class="hack-btn">Launch</button></div>
+        <div class="tool-panel"><h3>GameTools Pro</h3><p>Mods & tweaks.</p><button class="hack-btn">Open</button></div>
+        <div class="tool-panel"><h3>LulsGuard</h3><p>Threat monitor.</p><button class="hack-btn">Activate</button></div>
+    </div>
 </section>
 
 <!-- DOWNLOADS -->
-<section id="downloads" class="section">
-    <h2>Tool <span>Downloads</span></h2>
-    <p class="section-sub">Programs, bots, scripts, utilities, and supporting files.</p>
+<section id="downloads" class="downloads-section section">
+    <h2>Downloads</h2>
+    <p class="section-sub">Programs, bots, utilities, tools & more.</p>
 
-    <input class="download-search" id="download-search" placeholder="Search downloads...">
+    <input 
+        type="text"
+        id="download-search"
+        class="download-search"
+        placeholder="Search downloads..."
+        oninput="filterDownloads()"
+    />
+
+    <div class="filter-buttons">
+        <button onclick="setFilter('All')" class="filter-btn active">All</button>
+        <button onclick="setFilter('Bots')" class="filter-btn">Bots</button>
+        <button onclick="setFilter('OCR')" class="filter-btn">OCR</button>
+        <button onclick="setFilter('QoL')" class="filter-btn">QoL</button>
+        <button onclick="setFilter('Networking')" class="filter-btn">Networking</button>
+        <button onclick="setFilter('Proxy')" class="filter-btn">Proxy</button>
+        <button onclick="setFilter('Routes')" class="filter-btn">Routes</button>
+        <button onclick="setFilter('Source')" class="filter-btn">Source</button>
+        <button onclick="setFilter('Patcher')" class="filter-btn">Patcher</button>
+        <button onclick="setFilter('Prerequisite')" class="filter-btn">Prerequisite</button>
+    </div>
 
     <div id="downloads-grid" class="downloads-grid"></div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section contact">
-    <h2>Contact <span>Us</span></h2>
+<!-- DIGITAL OUTLET (NEW SECTION YOU REQUESTED AT BOTTOM) -->
+<section id="outlet" class="downloads-section section">
+    <h2>Digital <span>Outlet</span></h2>
+    <p class="section-sub">Auto-loaded templates, programs, tools & assets.</p>
 
-    <div class="contact-grid">
+    <input 
+        type="text"
+        id="outlet-search"
+        class="download-search"
+        placeholder="Search outlet..."
+        oninput="filterOutlet()"
+    />
 
-        <div class="card">
-            <h3>Email</h3>
-            <p>ZeroByteKody@proton.me</p>
-        </div>
+    <div id="outlet-grid" class="downloads-grid"></div>
+</section>
 
-        <a href="https://github.com/HelloSpaghettiBot" target="_blank">
-            <div class="card">
-                <h3>GitHub</h3>
-                <p>Code, updates & utilities</p>
-            </div>
-        </a>
-
-    </div>
+<!-- ABOUT -->
+<section id="about" class="about section">
+    <h2>About <span>luls.lol</span></h2>
+    <p>We build tools, fix computers, and create hacker-themed software for everyone.</p>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-    © 2025 luls.lol — Cyber Tools & Utilities
+    <div class="logo">luls.lol</div>
+    <p>© 2025 luls.lol — All rights reserved.</p>
 </footer>
 
-<!-- CRISP LIVE CHAT -->
+<!-- CRISP CHAT -->
 <script type="text/javascript">
-    window.$crisp = [];
-    window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
-    (function(){
-        d=document;s=d.createElement("script");
-        s.src="https://client.crisp.chat/l.js";s.async=1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-    })();
+window.$crisp = [];
+window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
+(function(){
+    var d=document, s=d.createElement("script");
+    s.src="https://client.crisp.chat/l.js"; s.async=1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+})();
 </script>
 
-<!-- MOBILE MENU SCRIPT -->
+<!-- MOBILE NAV JS -->
 <script>
-document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("mobile-nav").classList.toggle("open");
-});
+function toggleMenu(){document.getElementById("mobile-nav").classList.toggle("open");}
+function closeMenu(){document.getElementById("mobile-nav").classList.remove("open");}
 </script>
 
-<!-- DIGITAL OUTLET LOADER -->
+<!-- DOWNLOADS JSON LOADING -->
 <script>
-const OUTLET_URL = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+const downloadsUrl = "https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
+let allDownloads = [];
+let activeFilter = "All";
 
-const outletGrid = document.getElementById("outlet-grid");
-const outletSearch = document.getElementById("outlet-search");
-const outletStatus = document.getElementById("outlet-status");
-
-let OUTLET_DATA = [];
-
-function renderOutlet(list) {
-    outletGrid.innerHTML = list.map(p => `
-        <div class="card download-card">
-            <img src="${p.image}" style="width:100%;border-radius:10px;margin-bottom:10px;">
-            <h3>${p.title}</h3>
-            <a href="${p.url}" target="_blank" class="btn primary" style="margin-top:12px;display:inline-block;">
-                View
-            </a>
-        </div>
-    `).join("");
-    outletStatus.textContent = `${list.length} item(s)`;
+async function loadDownloads(){
+    const res = await fetch(downloadsUrl);
+    allDownloads = await res.json();
+    renderDownloads(allDownloads);
 }
 
-outletSearch.addEventListener("input", () => {
-    const q = outletSearch.value.toLowerCase();
-    renderOutlet(OUTLET_DATA.filter(p => p.title.toLowerCase().includes(q)));
-});
-
-fetch(OUTLET_URL)
-    .then(res => res.json())
-    .then(data => {
-        OUTLET_DATA = data;
-        renderOutlet(OUTLET_DATA);
+function renderDownloads(list){
+    const grid=document.getElementById("downloads-grid");
+    grid.innerHTML="";
+    list.forEach(item=>{
+        const cats=item.categories?.join(", ")||"Misc";
+        grid.innerHTML += `
+        <div class="download-card">
+            <h3>${item.title}</h3>
+            <p><strong>Version:</strong> ${item.version}</p>
+            <p>${item.description}</p>
+            <p class="details">${item.details}</p>
+            <p class="cats"><strong>Categories:</strong> ${cats}</p>
+            <a href="${item.link}" class="btn secondary" target="_blank">Download</a>
+        </div>`;
     });
+}
+
+function setFilter(cat){
+    activeFilter=cat;
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    [...document.querySelectorAll(".filter-btn")].find(b=>b.textContent===cat).classList.add("active");
+    filterDownloads();
+}
+
+function filterDownloads(){
+    const q=document.getElementById("download-search").value.toLowerCase();
+    const result=allDownloads.filter(item=>{
+        const s=item.title.toLowerCase().includes(q)
+             ||item.description.toLowerCase().includes(q)
+             ||item.details.toLowerCase().includes(q);
+        const f=(activeFilter==="All"||item.categories.includes(activeFilter));
+        return s && f;
+    });
+    renderDownloads(result);
+}
+
+loadDownloads();
+</script>
+
+<!-- DIGITAL OUTLET JSON LOADING -->
+<script>
+const outletUrl = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+let outletItems = [];
+
+async function loadOutlet(){
+    const res = await fetch(outletUrl);
+    outletItems = await res.json();
+    renderOutlet(outletItems);
+}
+
+function renderOutlet(list){
+    const grid=document.getElementById("outlet-grid");
+    grid.innerHTML="";
+    list.forEach(item=>{
+        grid.innerHTML += `
+        <div class="download-card">
+            <h3>${item.title}</h3>
+            <p>${item.description || ""}</p>
+            <a href="${item.url}" class="btn secondary" target="_blank">Open</a>
+        </div>`;
+    });
+}
+
+function filterOutlet(){
+    const q=document.getElementById("outlet-search").value.toLowerCase();
+    const result=outletItems.filter(item =>
+        item.title.toLowerCase().includes(q)
+    );
+    renderOutlet(result);
+}
+
+loadOutlet();
 </script>
 
 </body>
