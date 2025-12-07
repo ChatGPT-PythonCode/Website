@@ -21,11 +21,10 @@
         <a href="#services">Services</a>
         <a href="#tools">Tools</a>
         <a href="#downloads">Downloads</a>
-        <a href="#support">Support</a>
         <a href="#about">About</a>
     </nav>
 
-    <a class="cta-btn" href="#support">Get Help</a>
+    <a class="cta-btn" href="#downloads">Get Tools</a>
 
     <div class="hamburger" onclick="toggleMenu()">
         <div></div><div></div><div></div>
@@ -39,7 +38,6 @@
     <a onclick="closeMenu()" href="#services">Services</a>
     <a onclick="closeMenu()" href="#tools">Tools</a>
     <a onclick="closeMenu()" href="#downloads">Downloads</a>
-    <a onclick="closeMenu()" href="#support">Support</a>
     <a onclick="closeMenu()" href="#about">About</a>
 </div>
 
@@ -50,8 +48,8 @@
         <p>Elite-level tech support, virus removal, performance tuning, and custom hacker tools.</p>
 
         <div class="hero-buttons">
-            <a href="#support" class="btn primary">Get Tech Support</a>
-            <a href="#tools" class="btn secondary">Explore Tools</a>
+            <a href="#downloads" class="btn primary">Get Tools</a>
+            <a href="#tools" class="btn secondary">Explore Dashboard</a>
         </div>
     </div>
 
@@ -129,16 +127,6 @@
     <div id="downloads-grid" class="downloads-grid"></div>
 </section>
 
-<!-- SUPPORT -->
-<section id="support" class="cta-final section">
-    <h2>Need help right now?</h2>
-    <p>Instant diagnostics, malware cleanup & tuning.</p>
-
-    <div class="inline-chat-container">
-        <div id="crisp-inline"></div>
-    </div>
-</section>
-
 <!-- ABOUT -->
 <section id="about" class="about section">
     <h2>About <span>luls.lol</span></h2>
@@ -152,59 +140,19 @@
 </footer>
 
 
-<!-- ======================================================
-     WORKING INLINE CRISP CHAT SCRIPT (FINAL VERSION)
-====================================================== -->
+<!-- NATIVE CRISP CHAT (WORKING FLOATING WIDGET) -->
 <script type="text/javascript">
 window.$crisp = [];
 window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
 
-(function () {
+(function() {
     var d = document;
     var s = d.createElement("script");
     s.src = "https://client.crisp.chat/l.js";
     s.async = 1;
-
-    s.onload = function () {
-
-        /* Disable floating widget completely */
-        $crisp.push(["config", "hide:on:mobile", true]);
-        $crisp.push(["config", "hide:on:desktop", true]);
-
-        /* Move Crisp iframe into inline container */
-        let attempts = 0;
-        let interval = setInterval(() => {
-
-            attempts++;
-            const iframe = document.querySelector("iframe.crisp-client");
-            const inline = document.getElementById("crisp-inline");
-
-            if (iframe && inline) {
-                clearInterval(interval);
-
-                inline.appendChild(iframe);
-
-                iframe.style.width = "100%";
-                iframe.style.maxWidth = "600px";
-                iframe.style.height = "620px";
-                iframe.style.borderRadius = "14px";
-                iframe.style.border = "1px solid #b06cff";
-                iframe.style.boxShadow = "0 0 25px rgba(176,108,255,0.4)";
-                iframe.style.display = "block";
-                iframe.style.margin = "0 auto";
-
-            } else if (attempts > 40) {
-                console.warn("Crisp did not load inline (timeout).");
-                clearInterval(interval);
-            }
-
-        }, 250);
-    };
-
     d.getElementsByTagName("head")[0].appendChild(s);
 })();
 </script>
-
 
 <!-- NAV JS -->
 <script>
