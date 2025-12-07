@@ -1,249 +1,196 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Tech tools, programs, templates, reviews and digital utilities.">
-  <title>luls.lol – Programs, Tools, Templates</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>luls.lol – Tech Support, Programs, Digital Tools</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
-
-  <style>
-    body{background:linear-gradient(to bottom right,#0f172a,#1e293b,#000);color:white;}
-
-    .nav-link{position:relative;padding-bottom:2px}
-    .nav-link::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#b06cff,#8b5cf6);transition:width .3s}
-    .nav-link:hover::after,.nav-link.active::after{width:100%}
-
-    .card{
-      transition:transform .25s ease, box-shadow .25s ease;
-      background:rgba(31,41,55,.5);
-      border:1px solid rgba(75,85,99,.35);
-      backdrop-filter: blur(10px);
-    }
-    .card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 14px 28px rgba(0,0,0,.35);
-      border-color: rgba(176,108,255,.5);
-    }
-
-    .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  </style>
+    <!-- Tailwind for grids & utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="font-sans min-h-screen">
+<body>
+
+<!-- CYBER GRID BACKGROUND -->
+<div class="cyber-grid"></div>
 
 <!-- HEADER -->
-<header class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-40">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#welcome" class="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-      luls.lol
-    </a>
+<header class="header">
+    <div class="logo">luls<span>.lol</span></div>
 
-    <nav class="hidden md:flex gap-8">
-      <a href="#welcome" class="nav-link text-gray-300 hover:text-white">Home</a>
-      <a href="#programs" class="nav-link text-gray-300 hover:text-white">Programs</a>
-      <a href="#outlet" class="nav-link text-gray-300 hover:text-white">Digital Outlet</a>
-      <a href="#downloads" class="nav-link text-gray-300 hover:text-white">Downloads</a>
-      <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+    <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#programs">Programs</a>
+        <a href="#outlet">Digital Outlet</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <button id="mobile-btn" class="md:hidden text-white"><i class="fas fa-bars text-xl"></i></button>
-  </div>
-
-  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
-    <nav class="flex flex-col gap-3">
-      <a href="#welcome" class="nav-link text-gray-300 hover:text-white">Home</a>
-      <a href="#programs" class="nav-link text-gray-300 hover:text-white">Programs</a>
-      <a href="#outlet" class="nav-link text-gray-300 hover:text-white">Digital Outlet</a>
-      <a href="#downloads" class="nav-link text-gray-300 hover:text-white">Downloads</a>
-      <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
-    </nav>
-  </div>
+    <div class="hamburger" id="hamburger">
+        <div></div><div></div><div></div>
+    </div>
 </header>
 
-<!-- WELCOME -->
-<section id="welcome" class="min-h-screen scroll-mt-28 grid place-items-center text-center px-6">
-  <div>
-    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
-      Programs, Templates & Tech Tools
-    </h1>
-    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-      Professional utilities, clean templates, and useful software.
-    </p>
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+    <a href="#hero">Home</a>
+    <a href="#programs">Programs</a>
+    <a href="#outlet">Digital Outlet</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#contact">Contact</a>
+</div>
 
-    <div class="mt-8 flex gap-3 flex-wrap justify-center">
-      <a href="#programs" class="px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 transition">Programs</a>
-      <a href="#outlet" class="px-6 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Digital Outlet</a>
+<!-- HERO -->
+<section id="hero" class="hero">
+    <div class="hero-content">
+        <h1>Tech Support, Digital Tools, & Custom Programs</h1>
+        <p>
+            Cyber-themed utilities, system tools, software, optimizers, templates,  
+            and more—built for performance and reliability.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#programs" class="btn primary">Programs</a>
+            <a href="#outlet" class="btn secondary">Digital Outlet</a>
+        </div>
     </div>
-  </div>
+
+    <div class="hero-graphic">
+        <div class="glow-circle"></div>
+        <div class="hacker-cube"></div>
+    </div>
 </section>
 
-<!-- PROGRAMS SECTION (replaces hacker tools dashboard) -->
-<section id="programs" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
-  <div class="text-center mb-10">
-    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
-      Utilities & Programs
-    </h2>
-    <p class="text-gray-300">A curated set of tools and utilities built for performance, automation, and productivity.</p>
-  </div>
+<!-- PROGRAMS (REPLACES HACKER DASHBOARD) -->
+<section id="programs" class="section">
+    <h2>Utilities & <span>Programs</span></h2>
+    <p class="section-sub">Professional-grade tools, diagnostics, optimizers & scripts.</p>
 
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
-    <div class="card rounded-xl p-6 text-center">
-      <h3 class="font-semibold text-xl mb-2">System Optimizer</h3>
-      <p class="text-gray-300 text-sm">Cleanup scripts, tuning tools, and performance enhancements.</p>
-    </div>
+    <div class="programs-grid">
+        <div class="program-card">
+            <h3>System Optimizer</h3>
+            <p>Cleanup, tuning scripts, and performance upgrades.</p>
+        </div>
 
-    <div class="card rounded-xl p-6 text-center">
-      <h3 class="font-semibold text-xl mb-2">Automation Tools</h3>
-      <p class="text-gray-300 text-sm">Simplify workflows and reduce repetitive tasks.</p>
-    </div>
+        <div class="program-card">
+            <h3>Automation Tools</h3>
+            <p>Workflow automation and task simplification utilities.</p>
+        </div>
 
-    <div class="card rounded-xl p-6 text-center">
-      <h3 class="font-semibold text-xl mb-2">Diagnostics Suite</h3>
-      <p class="text-gray-300 text-sm">System scanning, troubleshooting, and repair tools.</p>
-    </div>
+        <div class="program-card">
+            <h3>Diagnostics Suite</h3>
+            <p>Scan, detect, and repair common system issues.</p>
+        </div>
 
-    <div class="card rounded-xl p-6 text-center">
-      <h3 class="font-semibold text-xl mb-2">Custom Programs</h3>
-      <p class="text-gray-300 text-sm">Bespoke utilities for gaming, media, and development.</p>
+        <div class="program-card">
+            <h3>Custom Utilities</h3>
+            <p>Gaming tools, mod helpers, batch utilities & more.</p>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- DIGITAL OUTLET (auto pulls from GitHub products.json) -->
-<section id="outlet" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
-  <div class="text-center mb-10">
-    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-      Digital Outlet
-    </h2>
-    <p class="text-gray-300">Products auto-loaded from GitHub Portfolio.</p>
-  </div>
+<!-- DIGITAL OUTLET (AUTO LOAD FROM GITHUB JSON) -->
+<section id="outlet" class="section downloads-section">
+    <h2>Digital <span>Outlet</span></h2>
+    <p class="section-sub">Auto-populated tools from your GitHub portfolio.</p>
 
-  <div class="mb-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
-    <div class="flex items-center gap-2 w-full">
-      <input id="outlet-search" type="text" placeholder="Search products..." class="w-full sm:w-96 px-4 py-2 rounded-lg bg-gray-800/60 border border-purple-600 text-gray-200 focus:outline-none">
-      <button id="outlet-clear" class="px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-sm">Clear</button>
-    </div>
-    <div id="outlet-status" class="text-sm text-gray-400"></div>
-  </div>
+    <input id="outlet-search" class="download-search" placeholder="Search products...">
 
-  <div id="outlet-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    <div id="outlet-status" class="text-center text-gray-400"></div>
+
+    <div id="outlet-grid"></div>
 </section>
 
-<!-- DOWNLOADS SECTION (you already had one) -->
-<section id="downloads" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
-  <div class="text-center mb-10">
-    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
-      Downloads
-    </h2>
-    <p class="text-gray-300">Programs, utilities, and tools.</p>
-  </div>
+<!-- DOWNLOADS -->
+<section id="downloads" class="section">
+    <h2>Tool <span>Downloads</span></h2>
+    <p class="section-sub">Programs, bots, scripts, utilities, and supporting files.</p>
 
-  <div id="downloads-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center text-gray-300">
-    <!-- Your existing JS will auto-populate this -->
-  </div>
+    <input class="download-search" id="download-search" placeholder="Search downloads...">
+
+    <div id="downloads-grid" class="downloads-grid"></div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-20 px-6 max-w-5xl mx-auto scroll-mt-28">
-  <div class="text-center mb-10">
-    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
-      Contact
-    </h2>
-  </div>
+<section id="contact" class="section contact">
+    <h2>Contact <span>Us</span></h2>
 
-  <div class="grid md:grid-cols-3 gap-8">
-    <a href="mailto:ZeroByteKody@proton.me" class="card rounded-xl p-8 text-center hover:scale-[1.02]">
-      <div class="w-16 h-16 bg-purple-600 rounded-full mx-auto flex items-center justify-center mb-4">
-        <i class="fas fa-envelope text-white text-xl"></i>
-      </div>
-      <h4 class="font-semibold text-lg mb-2">Email</h4>
-      <p class="text-purple-300">ZeroByteKody@proton.me</p>
-    </a>
+    <div class="contact-grid">
 
-    <a href="https://github.com/HelloSpaghettiBot" target="_blank" class="card rounded-xl p-8 text-center hover:scale-[1.02]">
-      <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto flex items-center justify-center mb-4">
-        <i class="fab fa-github text-white text-xl"></i>
-      </div>
-      <h4 class="font-semibold text-lg mb-2">GitHub</h4>
-      <p class="text-gray-300">Code & Projects</p>
-    </a>
-  </div>
+        <div class="card">
+            <h3>Email</h3>
+            <p>ZeroByteKody@proton.me</p>
+        </div>
+
+        <a href="https://github.com/HelloSpaghettiBot" target="_blank">
+            <div class="card">
+                <h3>GitHub</h3>
+                <p>Code, updates & utilities</p>
+            </div>
+        </a>
+
+    </div>
 </section>
 
-<!-- Crisp Chat (native floating widget) -->
+<!-- FOOTER -->
+<footer class="footer">
+    © 2025 luls.lol — Cyber Tools & Utilities
+</footer>
+
+<!-- CRISP LIVE CHAT -->
 <script type="text/javascript">
-window.$crisp=[];window.CRISP_WEBSITE_ID="b73be199-2dc0-4003-8785-48f37ac612a7";
-(function(){d=document;s=d.createElement("script");
-s.src="https://client.crisp.chat/l.js";s.async=1;
-d.getElementsByTagName("head")[0].appendChild(s);})();
+    window.$crisp = [];
+    window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
+    (function(){
+        d=document;s=d.createElement("script");
+        s.src="https://client.crisp.chat/l.js";s.async=1;
+        d.getElementsByTagName("head")[0].appendChild(s);
+    })();
 </script>
 
-<!-- SCRIPT: Mobile Nav + Product Loader -->
+<!-- MOBILE MENU SCRIPT -->
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  // MOBILE MENU
-  const mb=document.getElementById('mobile-btn');
-  const mm=document.getElementById('mobile-menu');
-  mb.addEventListener('click',()=>{
-      mm.classList.toggle('hidden');
-      mb.querySelector('i').className=mm.classList.contains('hidden')?'fas fa-bars text-xl':'fas fa-times text-xl';
-  });
-
-  // =========================
-  // DIGITAL OUTLET LOADER
-  // =========================
-  const PRODUCT_URL = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
-
-  const outletGrid=document.getElementById("outlet-grid");
-  const outletSearch=document.getElementById("outlet-search");
-  const outletClear=document.getElementById("outlet-clear");
-  const outletStatus=document.getElementById("outlet-status");
-
-  let PRODUCT_LIST=[];
-
-  function renderProducts(list){
-    outletGrid.innerHTML=list.map(p=>`
-      <article class="card rounded-xl overflow-hidden">
-        <div class="aspect-square relative overflow-hidden">
-          <img src="${p.image}" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition grid place-items-center">
-            <a href="${p.url}" target="_blank" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700">View Product</a>
-          </div>
-        </div>
-        <div class="p-4"><h3 class="font-semibold clamp-2">${p.title}</h3></div>
-      </article>
-    `).join("");
-
-    outletStatus.textContent = list.length + " product(s)";
-  }
-  
-  function applySearch(){
-    const q=(outletSearch.value||"").toLowerCase();
-    if(!q){renderProducts(PRODUCT_LIST);return;}
-    renderProducts(PRODUCT_LIST.filter(p=>p.title.toLowerCase().includes(q)));
-  }
-
-  outletSearch.addEventListener("input",applySearch);
-  outletClear.addEventListener("click",()=>{outletSearch.value="";applySearch();});
-
-  fetch(PRODUCT_URL)
-    .then(res=>res.json())
-    .then(items=>{
-      PRODUCT_LIST=items;
-      renderProducts(PRODUCT_LIST);
-    })
-    .catch(()=>{
-      outletStatus.textContent="Failed to load products.";
-    });
-
+document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("mobile-nav").classList.toggle("open");
 });
+</script>
+
+<!-- DIGITAL OUTLET LOADER -->
+<script>
+const OUTLET_URL = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+
+const outletGrid = document.getElementById("outlet-grid");
+const outletSearch = document.getElementById("outlet-search");
+const outletStatus = document.getElementById("outlet-status");
+
+let OUTLET_DATA = [];
+
+function renderOutlet(list) {
+    outletGrid.innerHTML = list.map(p => `
+        <div class="card download-card">
+            <img src="${p.image}" style="width:100%;border-radius:10px;margin-bottom:10px;">
+            <h3>${p.title}</h3>
+            <a href="${p.url}" target="_blank" class="btn primary" style="margin-top:12px;display:inline-block;">
+                View
+            </a>
+        </div>
+    `).join("");
+    outletStatus.textContent = `${list.length} item(s)`;
+}
+
+outletSearch.addEventListener("input", () => {
+    const q = outletSearch.value.toLowerCase();
+    renderOutlet(OUTLET_DATA.filter(p => p.title.toLowerCase().includes(q)));
+});
+
+fetch(OUTLET_URL)
+    .then(res => res.json())
+    .then(data => {
+        OUTLET_DATA = data;
+        renderOutlet(OUTLET_DATA);
+    });
 </script>
 
 </body>
