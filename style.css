@@ -426,7 +426,7 @@ h2 span {
     margin-top: 40px;
 }
 
-/* L Letter Shape */
+/* Base glowing border */
 .lol-letter {
     width: 90px;
     height: 160px;
@@ -437,7 +437,19 @@ h2 span {
     animation: pulse 3s infinite ease-in-out;
 }
 
-/* Inner bottom stroke */
+/* Make left L shape */
+.l-left {
+    border-top: none;     /* remove top */
+    border-right: none;   /* remove right side */
+}
+
+/* Make right L shape (mirrored) */
+.l-right {
+    border-top: none;     /* remove top */
+    border-left: none;    /* remove left side */
+}
+
+/* Extra bottom inner stroke for both L’s */
 .lol-letter::after {
     content: "";
     position: absolute;
@@ -450,7 +462,7 @@ h2 span {
     box-shadow: 0 0 15px #b06cff88;
 }
 
-/* Cube already pulses from your existing CSS */
+/* Center cube overrides */
 .hacker-cube {
     width: 150px;
     height: 150px;
@@ -463,5 +475,3 @@ h2 span {
         transform: scale(0.65);
     }
 }
-
-
