@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>luls.lol - Tech Support & Hacker Tools</title>
+    <title>luls.lol - Tech Support & Tools</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -17,11 +17,9 @@
 
     <nav class="nav">
         <a href="#home">Home</a>
-        <a href="#templates">Templates</a>
         <a href="#services">Services</a>
-        <a href="#tools">Tools</a>
-        <a href="#downloads">Downloads</a>
         <a href="#outlet">Digital Outlet</a>
+        <a href="#downloads">Downloads</a>
         <a href="#about">About</a>
     </nav>
 
@@ -35,11 +33,9 @@
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
     <a onclick="closeMenu()" href="#home">Home</a>
-    <a onclick="closeMenu()" href="#templates">Templates</a>
     <a onclick="closeMenu()" href="#services">Services</a>
-    <a onclick="closeMenu()" href="#tools">Tools</a>
-    <a onclick="closeMenu()" href="#downloads">Downloads</a>
     <a onclick="closeMenu()" href="#outlet">Digital Outlet</a>
+    <a onclick="closeMenu()" href="#downloads">Downloads</a>
     <a onclick="closeMenu()" href="#about">About</a>
 </div>
 
@@ -47,29 +43,17 @@
 <section id="home" class="hero">
     <div class="hero-content">
         <h1>Fixing, Protecting & Powering Your <span>Digital Life</span></h1>
-        <p>Elite-level tech support, virus removal, performance tuning, and custom hacker tools.</p>
+        <p>Elite-level tech support, virus removal, performance tuning, and custom tools.</p>
 
         <div class="hero-buttons">
             <a href="#downloads" class="btn primary">Get Tools</a>
-            <a href="#tools" class="btn secondary">Explore Dashboard</a>
+            <a href="#outlet" class="btn secondary">Browse Outlet</a>
         </div>
     </div>
 
     <div class="hero-graphic">
         <div class="glow-circle"></div>
         <div class="cube hacker-cube"></div>
-    </div>
-</section>
-
-<!-- TEMPLATES -->
-<section id="templates" class="templates section">
-    <h2>Website <span>Templates</span></h2>
-    <p class="section-sub">Cyberpunk, hacker-themed, and modern designs.</p>
-
-    <div class="templates-grid">
-        <div class="template-card"><h3>Cybersecurity</h3><p>Dark neon theme.</p></div>
-        <div class="template-card"><h3>Terminal</h3><p>Green terminal interface.</p></div>
-        <div class="template-card"><h3>Gaming OS</h3><p>Fast, bold, high-contrast.</p></div>
     </div>
 </section>
 
@@ -87,17 +71,20 @@
     </div>
 </section>
 
-<!-- TOOLS -->
-<section id="tools" class="tools-dashboard section">
-    <h2>Hacker Tools <span>Dashboard</span></h2>
-    <p class="section-sub">Interactive cyber grid.</p>
+<!-- DIGITAL OUTLET (REPLACES TEMPLATES) -->
+<section id="outlet" class="section downloads-section">
+    <h2>Digital <span>Outlet</span></h2>
+    <p class="section-sub">Neon cyber templates, utilities, programs and assets.</p>
 
-    <div class="dashboard-grid">
-        <div class="tool-panel"><h3>LulsOptimizer</h3><p>PC speed boost.</p><button class="hack-btn">Launch</button></div>
-        <div class="tool-panel"><h3>LulsBot Suite</h3><p>Automation bots.</p><button class="hack-btn">Launch</button></div>
-        <div class="tool-panel"><h3>GameTools Pro</h3><p>Mods & tweaks.</p><button class="hack-btn">Open</button></div>
-        <div class="tool-panel"><h3>LulsGuard</h3><p>Threat monitor.</p><button class="hack-btn">Activate</button></div>
-    </div>
+    <input 
+        type="text"
+        id="outlet-search"
+        class="download-search"
+        placeholder="Search Digital Outlet..."
+        oninput="filterOutlet()"
+    />
+
+    <div id="outlet-grid" class="downloads-grid"></div>
 </section>
 
 <!-- DOWNLOADS -->
@@ -129,26 +116,10 @@
     <div id="downloads-grid" class="downloads-grid"></div>
 </section>
 
-<!-- DIGITAL OUTLET (NEW SECTION YOU REQUESTED AT BOTTOM) -->
-<section id="outlet" class="downloads-section section">
-    <h2>Digital <span>Outlet</span></h2>
-    <p class="section-sub">Auto-loaded templates, programs, tools & assets.</p>
-
-    <input 
-        type="text"
-        id="outlet-search"
-        class="download-search"
-        placeholder="Search outlet..."
-        oninput="filterOutlet()"
-    />
-
-    <div id="outlet-grid" class="downloads-grid"></div>
-</section>
-
 <!-- ABOUT -->
 <section id="about" class="about section">
     <h2>About <span>luls.lol</span></h2>
-    <p>We build tools, fix computers, and create hacker-themed software for everyone.</p>
+    <p>We build tools, fix computers, and create cyber-themed software for everyone.</p>
 </section>
 
 <!-- FOOTER -->
@@ -159,30 +130,25 @@
 
 <!-- CRISP CHAT -->
 <script type="text/javascript">
-window.$crisp = [];
-window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
-(function(){
-    var d=document, s=d.createElement("script");
-    s.src="https://client.crisp.chat/l.js"; s.async=1;
-    d.getElementsByTagName("head")[0].appendChild(s);
-})();
+window.$crisp=[];window.CRISP_WEBSITE_ID="b73be199-2dc0-4003-8785-48f37ac612a7";
+(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
 </script>
 
-<!-- MOBILE NAV JS -->
+<!-- NAV JS -->
 <script>
 function toggleMenu(){document.getElementById("mobile-nav").classList.toggle("open");}
 function closeMenu(){document.getElementById("mobile-nav").classList.remove("open");}
 </script>
 
-<!-- DOWNLOADS JSON LOADING -->
+<!-- DOWNLOADS JSON -->
 <script>
-const downloadsUrl = "https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
-let allDownloads = [];
-let activeFilter = "All";
+const downloadsUrl="https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
+let allDownloads=[];
+let activeFilter="All";
 
 async function loadDownloads(){
-    const res = await fetch(downloadsUrl);
-    allDownloads = await res.json();
+    const res=await fetch(downloadsUrl);
+    allDownloads=await res.json();
     renderDownloads(allDownloads);
 }
 
@@ -212,49 +178,58 @@ function setFilter(cat){
 
 function filterDownloads(){
     const q=document.getElementById("download-search").value.toLowerCase();
-    const result=allDownloads.filter(item=>{
+    const res=allDownloads.filter(item=>{
         const s=item.title.toLowerCase().includes(q)
-             ||item.description.toLowerCase().includes(q)
-             ||item.details.toLowerCase().includes(q);
-        const f=(activeFilter==="All"||item.categories.includes(activeFilter));
+             || item.description.toLowerCase().includes(q)
+             || item.details.toLowerCase().includes(q);
+        const f=activeFilter==="All" || item.categories.includes(activeFilter);
         return s && f;
     });
-    renderDownloads(result);
+    renderDownloads(res);
 }
 
 loadDownloads();
 </script>
 
-<!-- DIGITAL OUTLET JSON LOADING -->
+<!-- DIGITAL OUTLET JSON -->
 <script>
-const outletUrl = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
-let outletItems = [];
+const outletUrl="https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+let outletItems=[];
 
 async function loadOutlet(){
-    const res = await fetch(outletUrl);
-    outletItems = await res.json();
+    const res=await fetch(outletUrl);
+    outletItems=await res.json();
     renderOutlet(outletItems);
+}
+
+// Neon placeholder if no image
+function outletImage(item){
+    return item.image 
+        ? `<img src="${item.image}" class="outlet-img">`
+        : `<div class="outlet-placeholder"></div>`;
 }
 
 function renderOutlet(list){
     const grid=document.getElementById("outlet-grid");
     grid.innerHTML="";
     list.forEach(item=>{
+        const desc=item.description || "";
+        const short=desc.length>70 ? desc.slice(0,70)+"…" : desc;
+
         grid.innerHTML += `
         <div class="download-card">
+            ${outletImage(item)}
             <h3>${item.title}</h3>
-            <p>${item.description || ""}</p>
-            <a href="${item.url}" class="btn secondary" target="_blank">Open</a>
+            <p>${short}</p>
+            <a href="${item.url}" class="btn secondary" target="_blank">View</a>
         </div>`;
     });
 }
 
 function filterOutlet(){
     const q=document.getElementById("outlet-search").value.toLowerCase();
-    const result=outletItems.filter(item =>
-        item.title.toLowerCase().includes(q)
-    );
-    renderOutlet(result);
+    const res=outletItems.filter(item => item.title.toLowerCase().includes(q));
+    renderOutlet(res);
 }
 
 loadOutlet();
