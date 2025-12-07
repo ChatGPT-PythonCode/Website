@@ -223,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     outletStatus.textContent = list.length + " product(s)";
   }
-
+  
   function applySearch(){
     const q=(outletSearch.value||"").toLowerCase();
     if(!q){renderProducts(PRODUCT_LIST);return;}
