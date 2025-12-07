@@ -1,217 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>luls.lol - Tech Support & Hacker Tools</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Tech tools, programs, templates, reviews and digital utilities.">
+  <title>luls.lol – Programs, Tools, Templates</title>
 
-<!-- Cyber Background -->
-<div class="cyber-grid"></div>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    body{background:linear-gradient(to bottom right,#0f172a,#1e293b,#000);color:white;}
+
+    .nav-link{position:relative;padding-bottom:2px}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,#b06cff,#8b5cf6);transition:width .3s}
+    .nav-link:hover::after,.nav-link.active::after{width:100%}
+
+    .card{
+      transition:transform .25s ease, box-shadow .25s ease;
+      background:rgba(31,41,55,.5);
+      border:1px solid rgba(75,85,99,.35);
+      backdrop-filter: blur(10px);
+    }
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 28px rgba(0,0,0,.35);
+      border-color: rgba(176,108,255,.5);
+    }
+
+    .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  </style>
+</head>
+
+<body class="font-sans min-h-screen">
 
 <!-- HEADER -->
-<header class="header">
-    <div class="logo">luls<span>.lol</span></div>
+<header class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-40">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#welcome" class="text-2xl font-extrabold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+      luls.lol
+    </a>
 
-    <nav class="nav">
-        <a href="#home">Home</a>
-        <a href="#templates">Templates</a>
-        <a href="#services">Services</a>
-        <a href="#tools">Tools</a>
-        <a href="#downloads">Downloads</a>
-        <a href="#about">About</a>
+    <nav class="hidden md:flex gap-8">
+      <a href="#welcome" class="nav-link text-gray-300 hover:text-white">Home</a>
+      <a href="#programs" class="nav-link text-gray-300 hover:text-white">Programs</a>
+      <a href="#outlet" class="nav-link text-gray-300 hover:text-white">Digital Outlet</a>
+      <a href="#downloads" class="nav-link text-gray-300 hover:text-white">Downloads</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
     </nav>
 
-    <a class="cta-btn" href="#downloads">Get Tools</a>
+    <button id="mobile-btn" class="md:hidden text-white"><i class="fas fa-bars text-xl"></i></button>
+  </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
+  <div id="mobile-menu" class="md:hidden hidden px-6 pb-4">
+    <nav class="flex flex-col gap-3">
+      <a href="#welcome" class="nav-link text-gray-300 hover:text-white">Home</a>
+      <a href="#programs" class="nav-link text-gray-300 hover:text-white">Programs</a>
+      <a href="#outlet" class="nav-link text-gray-300 hover:text-white">Digital Outlet</a>
+      <a href="#downloads" class="nav-link text-gray-300 hover:text-white">Downloads</a>
+      <a href="#contact" class="nav-link text-gray-300 hover:text-white">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobile-nav">
-    <a onclick="closeMenu()" href="#home">Home</a>
-    <a onclick="closeMenu()" href="#templates">Templates</a>
-    <a onclick="closeMenu()" href="#services">Services</a>
-    <a onclick="closeMenu()" href="#tools">Tools</a>
-    <a onclick="closeMenu()" href="#downloads">Downloads</a>
-    <a onclick="closeMenu()" href="#about">About</a>
-</div>
+<!-- WELCOME -->
+<section id="welcome" class="min-h-screen scroll-mt-28 grid place-items-center text-center px-6">
+  <div>
+    <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+      Programs, Templates & Tech Tools
+    </h1>
+    <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+      Professional utilities, clean templates, and useful software.
+    </p>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1>Fixing, Protecting & Powering Your <span>Digital Life</span></h1>
-        <p>Elite-level tech support, virus removal, performance tuning, and custom hacker tools.</p>
-
-        <div class="hero-buttons">
-            <a href="#downloads" class="btn primary">Get Tools</a>
-            <a href="#tools" class="btn secondary">Explore Dashboard</a>
-        </div>
+    <div class="mt-8 flex gap-3 flex-wrap justify-center">
+      <a href="#programs" class="px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 transition">Programs</a>
+      <a href="#outlet" class="px-6 py-3 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Digital Outlet</a>
     </div>
-
-    <div class="hero-graphic">
-        <div class="glow-circle"></div>
-        <div class="cube hacker-cube"></div>
-    </div>
+  </div>
 </section>
 
-<!-- TEMPLATES -->
-<section id="templates" class="templates section">
-    <h2>Website <span>Templates</span></h2>
-    <p class="section-sub">Cyberpunk, hacker-themed, and modern designs.</p>
+<!-- PROGRAMS SECTION (replaces hacker tools dashboard) -->
+<section id="programs" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
+  <div class="text-center mb-10">
+    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent">
+      Utilities & Programs
+    </h2>
+    <p class="text-gray-300">A curated set of tools and utilities built for performance, automation, and productivity.</p>
+  </div>
 
-    <div class="templates-grid">
-        <div class="template-card"><h3>Cybersecurity</h3><p>Dark neon theme.</p></div>
-        <div class="template-card"><h3>Terminal</h3><p>Green terminal interface.</p></div>
-        <div class="template-card"><h3>Gaming OS</h3><p>Fast, bold, high-contrast.</p></div>
-    </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="services section">
-    <h2>Our <span>Services</span></h2>
-    <p class="section-sub">Tech repair, cyber cleanup, automation, and more.</p>
-
-    <div class="services-grid">
-        <div class="card"><h3>🛠️ Computer Repair</h3><p>Fixes, optimization, diagnostics.</p></div>
-        <div class="card"><h3>🦠 Virus Removal</h3><p>Deep cleaning & protection.</p></div>
-        <div class="card"><h3>📡 Remote Support</h3><p>Instant remote help.</p></div>
-        <div class="card"><h3>⚙ Custom Software</h3><p>Automation & bots.</p></div>
-        <div class="card"><h3>🎮 Game Tools</h3><p>Tweaks, FPS boosters.</p></div>
-    </div>
-</section>
-
-<!-- TOOLS -->
-<section id="tools" class="tools-dashboard section">
-    <h2>Hacker Tools <span>Dashboard</span></h2>
-    <p class="section-sub">Interactive cyber grid.</p>
-
-    <div class="dashboard-grid">
-        <div class="tool-panel"><h3>LulsOptimizer</h3><p>PC speed boost.</p><button class="hack-btn">Launch</button></div>
-        <div class="tool-panel"><h3>LulsBot Suite</h3><p>Automation bots.</p><button class="hack-btn">Launch</button></div>
-        <div class="tool-panel"><h3>GameTools Pro</h3><p>Mods & tweaks.</p><button class="hack-btn">Open</button></div>
-        <div class="tool-panel"><h3>LulsGuard</h3><p>Threat monitor.</p><button class="hack-btn">Activate</button></div>
-    </div>
-</section>
-
-<!-- DOWNLOADS -->
-<section id="downloads" class="downloads-section section">
-    <h2>Downloads</h2>
-    <p class="section-sub">Programs, bots, utilities, tools & more.</p>
-
-    <input 
-        type="text"
-        id="download-search"
-        class="download-search"
-        placeholder="Search downloads..."
-        oninput="filterDownloads()"
-    />
-
-    <div class="filter-buttons">
-        <button onclick="setFilter('All')" class="filter-btn active">All</button>
-        <button onclick="setFilter('Bots')" class="filter-btn">Bots</button>
-        <button onclick="setFilter('OCR')" class="filter-btn">OCR</button>
-        <button onclick="setFilter('QoL')" class="filter-btn">QoL</button>
-        <button onclick="setFilter('Networking')" class="filter-btn">Networking</button>
-        <button onclick="setFilter('Proxy')" class="filter-btn">Proxy</button>
-        <button onclick="setFilter('Routes')" class="filter-btn">Routes</button>
-        <button onclick="setFilter('Source')" class="filter-btn">Source</button>
-        <button onclick="setFilter('Patcher')" class="filter-btn">Patcher</button>
-        <button onclick="setFilter('Prerequisite')" class="filter-btn">Prerequisite</button>
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+    <div class="card rounded-xl p-6 text-center">
+      <h3 class="font-semibold text-xl mb-2">System Optimizer</h3>
+      <p class="text-gray-300 text-sm">Cleanup scripts, tuning tools, and performance enhancements.</p>
     </div>
 
-    <div id="downloads-grid" class="downloads-grid"></div>
+    <div class="card rounded-xl p-6 text-center">
+      <h3 class="font-semibold text-xl mb-2">Automation Tools</h3>
+      <p class="text-gray-300 text-sm">Simplify workflows and reduce repetitive tasks.</p>
+    </div>
+
+    <div class="card rounded-xl p-6 text-center">
+      <h3 class="font-semibold text-xl mb-2">Diagnostics Suite</h3>
+      <p class="text-gray-300 text-sm">System scanning, troubleshooting, and repair tools.</p>
+    </div>
+
+    <div class="card rounded-xl p-6 text-center">
+      <h3 class="font-semibold text-xl mb-2">Custom Programs</h3>
+      <p class="text-gray-300 text-sm">Bespoke utilities for gaming, media, and development.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="about section">
-    <h2>About <span>luls.lol</span></h2>
-    <p>We build tools, fix computers, and create hacker-themed software for everyone.</p>
+<!-- DIGITAL OUTLET (auto pulls from GitHub products.json) -->
+<section id="outlet" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
+  <div class="text-center mb-10">
+    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+      Digital Outlet
+    </h2>
+    <p class="text-gray-300">Products auto-loaded from GitHub Portfolio.</p>
+  </div>
+
+  <div class="mb-8 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+    <div class="flex items-center gap-2 w-full">
+      <input id="outlet-search" type="text" placeholder="Search products..." class="w-full sm:w-96 px-4 py-2 rounded-lg bg-gray-800/60 border border-purple-600 text-gray-200 focus:outline-none">
+      <button id="outlet-clear" class="px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-sm">Clear</button>
+    </div>
+    <div id="outlet-status" class="text-sm text-gray-400"></div>
+  </div>
+
+  <div id="outlet-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="logo">luls.lol</div>
-    <p>© 2025 luls.lol — All rights reserved.</p>
-</footer>
+<!-- DOWNLOADS SECTION (you already had one) -->
+<section id="downloads" class="py-20 px-6 max-w-6xl mx-auto scroll-mt-28">
+  <div class="text-center mb-10">
+    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
+      Downloads
+    </h2>
+    <p class="text-gray-300">Programs, utilities, and tools.</p>
+  </div>
 
+  <div id="downloads-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-center text-gray-300">
+    <!-- Your existing JS will auto-populate this -->
+  </div>
+</section>
 
-<!-- NATIVE CRISP CHAT (WORKING FLOATING WIDGET) -->
+<!-- CONTACT -->
+<section id="contact" class="py-20 px-6 max-w-5xl mx-auto scroll-mt-28">
+  <div class="text-center mb-10">
+    <h2 class="text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+      Contact
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8">
+    <a href="mailto:ZeroByteKody@proton.me" class="card rounded-xl p-8 text-center hover:scale-[1.02]">
+      <div class="w-16 h-16 bg-purple-600 rounded-full mx-auto flex items-center justify-center mb-4">
+        <i class="fas fa-envelope text-white text-xl"></i>
+      </div>
+      <h4 class="font-semibold text-lg mb-2">Email</h4>
+      <p class="text-purple-300">ZeroByteKody@proton.me</p>
+    </a>
+
+    <a href="https://github.com/HelloSpaghettiBot" target="_blank" class="card rounded-xl p-8 text-center hover:scale-[1.02]">
+      <div class="w-16 h-16 bg-gray-600 rounded-full mx-auto flex items-center justify-center mb-4">
+        <i class="fab fa-github text-white text-xl"></i>
+      </div>
+      <h4 class="font-semibold text-lg mb-2">GitHub</h4>
+      <p class="text-gray-300">Code & Projects</p>
+    </a>
+  </div>
+</section>
+
+<!-- Crisp Chat (native floating widget) -->
 <script type="text/javascript">
-window.$crisp = [];
-window.CRISP_WEBSITE_ID = "b73be199-2dc0-4003-8785-48f37ac612a7";
-
-(function() {
-    var d = document;
-    var s = d.createElement("script");
-    s.src = "https://client.crisp.chat/l.js";
-    s.async = 1;
-    d.getElementsByTagName("head")[0].appendChild(s);
-})();
+window.$crisp=[];window.CRISP_WEBSITE_ID="b73be199-2dc0-4003-8785-48f37ac612a7";
+(function(){d=document;s=d.createElement("script");
+s.src="https://client.crisp.chat/l.js";s.async=1;
+d.getElementsByTagName("head")[0].appendChild(s);})();
 </script>
 
-<!-- NAV JS -->
+<!-- SCRIPT: Mobile Nav + Product Loader -->
 <script>
-function toggleMenu(){document.getElementById("mobile-nav").classList.toggle("open");}
-function closeMenu(){document.getElementById("mobile-nav").classList.remove("open");}
-</script>
+document.addEventListener("DOMContentLoaded", () => {
 
-<!-- DOWNLOADS JS -->
-<script>
-const downloadsUrl="https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
-let allDownloads=[];
-let activeFilter="All";
+  // MOBILE MENU
+  const mb=document.getElementById('mobile-btn');
+  const mm=document.getElementById('mobile-menu');
+  mb.addEventListener('click',()=>{
+      mm.classList.toggle('hidden');
+      mb.querySelector('i').className=mm.classList.contains('hidden')?'fas fa-bars text-xl':'fas fa-times text-xl';
+  });
 
-async function loadDownloads(){
-    const res=await fetch(downloadsUrl);
-    allDownloads=await res.json();
-    renderDownloads(allDownloads);
-}
+  // =========================
+  // DIGITAL OUTLET LOADER
+  // =========================
+  const PRODUCT_URL = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
 
-function renderDownloads(list){
-    const grid=document.getElementById("downloads-grid");
-    grid.innerHTML="";
+  const outletGrid=document.getElementById("outlet-grid");
+  const outletSearch=document.getElementById("outlet-search");
+  const outletClear=document.getElementById("outlet-clear");
+  const outletStatus=document.getElementById("outlet-status");
 
-    list.forEach(item=>{
-        const cats=item.categories?.join(", ")||"Misc";
-        const card=document.createElement("div");
-        card.className="download-card";
-        card.innerHTML=`
-            <h3>${item.title}</h3>
-            <p><strong>Version:</strong> ${item.version}</p>
-            <p>${item.description}</p>
-            <p class="details">${item.details}</p>
-            <p class="cats"><strong>Categories:</strong> ${cats}</p>
-            <a href="${item.link}" class="btn secondary" target="_blank">Download</a>
-        `;
-        grid.appendChild(card);
+  let PRODUCT_LIST=[];
+
+  function renderProducts(list){
+    outletGrid.innerHTML=list.map(p=>`
+      <article class="card rounded-xl overflow-hidden">
+        <div class="aspect-square relative overflow-hidden">
+          <img src="${p.image}" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition grid place-items-center">
+            <a href="${p.url}" target="_blank" class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700">View Product</a>
+          </div>
+        </div>
+        <div class="p-4"><h3 class="font-semibold clamp-2">${p.title}</h3></div>
+      </article>
+    `).join("");
+
+    outletStatus.textContent = list.length + " product(s)";
+  }
+
+  function applySearch(){
+    const q=(outletSearch.value||"").toLowerCase();
+    if(!q){renderProducts(PRODUCT_LIST);return;}
+    renderProducts(PRODUCT_LIST.filter(p=>p.title.toLowerCase().includes(q)));
+  }
+
+  outletSearch.addEventListener("input",applySearch);
+  outletClear.addEventListener("click",()=>{outletSearch.value="";applySearch();});
+
+  fetch(PRODUCT_URL)
+    .then(res=>res.json())
+    .then(items=>{
+      PRODUCT_LIST=items;
+      renderProducts(PRODUCT_LIST);
+    })
+    .catch(()=>{
+      outletStatus.textContent="Failed to load products.";
     });
-}
 
-function setFilter(cat){
-    activeFilter=cat;
-    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
-    [...document.querySelectorAll(".filter-btn")].find(b=>b.textContent===cat).classList.add("active");
-    filterDownloads();
-}
-
-function filterDownloads(){
-    const q=document.getElementById("download-search").value.toLowerCase();
-    const result=allDownloads.filter(item=>{
-        const s=item.title.toLowerCase().includes(q)
-             ||item.description.toLowerCase().includes(q)
-             ||item.details.toLowerCase().includes(q);
-        const f=(activeFilter==="All"||item.categories.includes(activeFilter));
-        return s && f;
-    });
-    renderDownloads(result);
-}
-
-loadDownloads();
+});
 </script>
 
 </body>
