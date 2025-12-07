@@ -1,225 +1,315 @@
-/* =========================================
-   GLOBAL RESET & BASE
-========================================= */
+/* ======================================================
+   RESET + GLOBAL
+====================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: linear-gradient(to bottom right,#0f172a,#1e293b,#000);
-    font-family: "Poppins", sans-serif;
-    color: white;
+    background: #070512;
+    color: #fff;
     overflow-x: hidden;
 }
 
-/* Smooth scroll */
-html {
-    scroll-behavior: smooth;
+/* ======================================================
+   CYBER GRID BACKGROUND
+====================================================== */
+.cyber-grid {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 48px,
+        rgba(150, 75, 255, 0.08) 50px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 48px,
+        rgba(150, 75, 255, 0.08) 50px
+    );
+    opacity: 0.15;
+    animation: gridScroll 20s linear infinite;
+    z-index: -1;
 }
 
-/* =========================================
-   TEXT UTILITIES
-========================================= */
-.clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+@keyframes gridScroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(60px); }
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
-.nav-link {
-    position: relative;
-    padding-bottom: 2px;
+/* ======================================================
+   HEADER
+====================================================== */
+.header {
+    width: 100%;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 7, 25, 0.75);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.logo span {
+    color: #b06cff;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.2s;
+    font-weight: 500;
+}
+.nav a:hover {
+    color: #b06cff;
+}
+
+/* CTA Button */
+.cta-btn {
+    padding: 10px 20px;
+    border: 1px solid #b06cff;
+    border-radius: 8px;
+    color: #b06cff;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.cta-btn:hover {
+    background: #b06cff;
+    color: #0b0719;
+}
+
+/* Mobile Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
     cursor: pointer;
 }
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    background: linear-gradient(90deg,#b06cff,#8b5cf6);
-    transition: width .3s;
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: #fff;
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #130b2a;
+    padding: 22px 8%;
+    position: fixed;
     width: 100%;
+    top: 70px;
+    left: 0;
+    border-top: 1px solid #2a1f4f;
+    z-index: 800;
 }
 
-/* Mobile nav dropdown */
-#mobile-menu a {
-    display: block;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+.mobile-nav.open { display: flex; }
+
+@media (max-width: 600px) {
+    .nav, .cta-btn { display: none; }
+    .hamburger { display: flex; }
 }
 
-/* =========================================
-   CARDS (used everywhere)
-========================================= */
-.card {
-    transition: transform .25s ease, box-shadow .25s ease;
-    background: rgba(31,41,55,.5);
-    border: 1px solid rgba(75,85,99,.35);
-    backdrop-filter: blur(10px);
-    border-radius: 16px;
+@media (min-width: 601px) {
+    .mobile-nav { display: none !important; }
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 28px rgba(0,0,0,.35);
-    border-color: rgba(176,108,255,.5);
+/* ======================================================
+   HERO SECTION
+====================================================== */
+.hero {
+    padding: 150px 8% 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-/* =========================================
-   SECTION HEADERS
-========================================= */
-.section-title {
+.hero-content {
+    max-width: 550px;
+}
+
+.hero-content h1 {
     font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    background: linear-gradient(to right, #b06cff, #8b5cf6, #06b6d4);
-    -webkit-background-clip: text;
-    color: transparent;
 }
 
-.section-sub {
+.hero-content p {
+    margin-top: 20px;
     color: #cfcfcf;
-    max-width: 600px;
-    margin: 0 auto;
 }
 
-/* =========================================
-   GRID LAYOUTS
-========================================= */
-.services-grid,
-#outlet-grid,
-#downloads-grid {
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary {
+    background: #b06cff;
+    color: #0b0719;
+}
+.secondary {
+    border: 1px solid #b06cff;
+    color: #b06cff;
+}
+
+/* Floating Cyber Cube */
+.hero-graphic {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+.hacker-cube {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #6f3cff, #b06cff);
+    animation: float 3s ease-in-out infinite, pulse 4s infinite;
+    box-shadow: 0 0 30px rgba(176,108,255,0.45);
+}
+
+.glow-circle {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background: radial-gradient(circle, #b06cff44, transparent);
+    border-radius: 50%;
+    filter: blur(25px);
+    top: -30px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #b06cff; }
+    100% { box-shadow: 0 0 34px #b06cff; }
+}
+
+/* ======================================================
+   CARD COMPONENT (used in Outlet, Programs, Downloads)
+====================================================== */
+.card,
+.download-card,
+.program-card {
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    padding: 24px;
+    border-radius: 16px;
+    transition: 0.25s;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+}
+
+.card:hover,
+.download-card:hover,
+.program-card:hover {
+    border-color: #b06cff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(176,108,255,0.35);
+}
+
+/* ======================================================
+   PROGRAMS SECTION (Tools Replacement)
+====================================================== */
+.programs-grid {
+    margin-top: 40px;
     display: grid;
     gap: 28px;
-}
-
-/* Adjust responsiveness */
-.services-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
+/* ======================================================
+   DIGITAL OUTLET STYLES
+====================================================== */
 #outlet-grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 28px;
 }
 
-#downloads-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+#outlet-grid img {
+    transition: 0.3s ease;
 }
 
-/* =========================================
-   PRODUCT IMAGE STYLES
-========================================= */
-#outlet-grid img,
-#downloads-grid img {
-    transition: .3s ease-in-out;
+#outlet-grid img:hover {
+    transform: scale(1.05);
 }
 
-#outlet-grid img:hover,
-#downloads-grid img:hover {
-    transform: scale(1.06);
-}
-
-/* Overlay hover effect */
-.overlay-hover {
-    background: rgba(0,0,0,0.4);
-    opacity: 0;
-    transition: .3s;
-}
-
-.overlay-hover:hover {
-    opacity: 1;
-}
-
-/* =========================================
-   BUTTONS
-========================================= */
-.btn,
-.gumroad-button {
-    padding: 10px 18px;
-    background: #b06cff;
-    border-radius: 10px;
-    font-weight: 600;
-    color: #0b0719;
-    text-decoration: none;
-    transition: .25s;
-}
-
-.btn:hover,
-.gumroad-button:hover {
-    background: #d1a7ff;
-}
-
-/* Secondary / outline-style buttons */
-.btn-outline {
-    border: 1px solid #b06cff;
-    color: #b06cff;
-    background: transparent;
-}
-
-.btn-outline:hover {
-    background: #b06cff;
-    color: #0b0719;
-}
-
-/* =========================================
-   SEARCH BAR STYLING
-========================================= */
-.search-input {
+.download-search,
+#outlet-search {
     width: 100%;
-    max-width: 420px;
-    padding: 12px;
-    background: rgba(31,41,55,.6);
-    border: 1px solid #3a226b;
-    border-radius: 10px;
+    max-width: 600px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.85);
     color: white;
     outline: none;
+    margin-bottom: 20px;
 }
 
-.search-input:focus {
-    border-color: #b06cff;
-    box-shadow: 0 0 10px rgba(176,108,255,0.4);
+.filter-btn.active {
+    background: #b06cff;
+    color: #0b0719;
 }
 
-/* =========================================
-   CONTACT SECTION
-========================================= */
-.contact-card {
-    text-align: center;
-    padding: 24px;
+/* ======================================================
+   DOWNLOADS
+====================================================== */
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
 }
 
-.contact-card i {
-    font-size: 28px;
+/* ======================================================
+   CONTACT
+====================================================== */
+.contact-grid {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-/* =========================================
+/* ======================================================
    FOOTER
-========================================= */
-footer {
-    background: #0a0715;
-    padding: 40px 8%;
+====================================================== */
+.footer {
+    padding: 50px;
     text-align: center;
+    background: #0a0715;
     color: #bbb;
-}
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-@media (max-width: 640px) {
-    .section-title {
-        font-size: 2.2rem;
-    }
 }
