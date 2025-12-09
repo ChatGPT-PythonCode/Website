@@ -76,50 +76,60 @@
     </div>
 </section>
 
-<!-- DIGITAL OUTLET (REPLACES TEMPLATES) -->
-<section id="outlet" class="section downloads-section">
+<!-- DIGITAL OUTLET -->
+<section id="outlet" class="templates section">
     <h2>Digital <span>Outlet</span></h2>
-    <p class="section-sub">Neon cyber templates, utilities, programs and assets.</p>
+    <p class="section-sub">Website templates, tools, utilities.</p>
 
-    <input 
-        type="text"
-        id="outlet-search"
-        class="download-search"
-        placeholder="Search Digital Outlet..."
-        oninput="filterOutlet()"
-    />
+    <!-- Search + Sort Row -->
+    <div class="search-sort-row">
+        <input id="outlet-search" class="search-box" type="text" placeholder="Search Outlet..." />
+        <select id="outlet-sort" class="sort-box">
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+            <option value="category">Category</option>
+            <option value="newest">Newest</option>
+        </select>
+    </div>
 
-    <div id="outlet-grid" class="downloads-grid"></div>
+    <div id="outlet-count" class="results-count"></div>
+
+    <!-- Outlet Grid -->
+    <div id="outlet-grid" class="templates-grid"></div>
+
+    <!-- Pagination -->
+    <div id="outlet-pagination" class="pagination"></div>
 </section>
+
 
 <!-- DOWNLOADS -->
 <section id="downloads" class="downloads-section section">
     <h2>Downloads</h2>
-    <p class="section-sub">Programs, bots, utilities, tools & more.</p>
+    <p class="section-sub">Programs, bots, utilities & more.</p>
 
-    <input 
-        type="text"
-        id="download-search"
-        class="download-search"
-        placeholder="Search downloads..."
-        oninput="filterDownloads()"
-    />
-
-    <div class="filter-buttons">
-        <button onclick="setFilter('All')" class="filter-btn active">All</button>
-        <button onclick="setFilter('Bots')" class="filter-btn">Bots</button>
-        <button onclick="setFilter('OCR')" class="filter-btn">OCR</button>
-        <button onclick="setFilter('QoL')" class="filter-btn">QoL</button>
-        <button onclick="setFilter('Networking')" class="filter-btn">Networking</button>
-        <button onclick="setFilter('Proxy')" class="filter-btn">Proxy</button>
-        <button onclick="setFilter('Routes')" class="filter-btn">Routes</button>
-        <button onclick="setFilter('Source')" class="filter-btn">Source</button>
-        <button onclick="setFilter('Patcher')" class="filter-btn">Patcher</button>
-        <button onclick="setFilter('Prerequisite')" class="filter-btn">Prerequisite</button>
+    <!-- Search + Sort Row -->
+    <div class="search-sort-row">
+        <input id="downloads-search" class="search-box" type="text" placeholder="Search Downloads..." />
+        <select id="downloads-sort" class="sort-box">
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+            <option value="category">Category</option>
+            <option value="newest">Newest</option>
+        </select>
     </div>
 
+    <!-- Filter Buttons -->
+    <div class="filter-buttons" id="downloads-filters"></div>
+
+    <div id="downloads-count" class="results-count"></div>
+
+    <!-- Downloads Grid -->
     <div id="downloads-grid" class="downloads-grid"></div>
+
+    <!-- Pagination -->
+    <div id="downloads-pagination" class="pagination"></div>
 </section>
+
 
 <!-- ABOUT -->
 <section id="about" class="about section">
