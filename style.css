@@ -485,3 +485,87 @@ h2 span {
     }
 }
 
+/* ========== SEARCH + SORT UI ========== */
+.search-sort-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.search-box,
+.sort-box {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.85);
+    color: white;
+    box-shadow: 0 0 15px rgba(176,108,255,0.2);
+}
+
+.search-box::placeholder {
+    color: #9e85b8;
+}
+
+/* ========== RESULTS COUNT ========== */
+.results-count {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #c8a5ff;
+    font-size: 1rem;
+}
+
+/* ========== PAGINATION ========== */
+.pagination {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #b06cff;
+    color: #b06cff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.page-btn:hover {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 20px #b06cffcc;
+}
+
+.page-btn.active {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 25px #b06cffee;
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Filter Buttons (Downloads Section) */
+.filter-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.9);
+    color: #c99bff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 20px #b06cffbb;
+}
