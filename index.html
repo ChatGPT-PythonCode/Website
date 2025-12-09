@@ -222,18 +222,30 @@ function sortOutlet(method){
     if (method === "category") outletFiltered.sort((a,b)=>(a.category||"").localeCompare(b.category||""));
     if (method === "newest") outletFiltered.sort((a,b)=>parseVersion(b.version) - parseVersion(a.version));
 }
-function renderOutlet(){
+function renderOutlet() {
     const grid = document.getElementById("outlet-grid");
     grid.innerHTML = "";
 
     let list = paginate(outletFiltered, outletPage);
 
-    list.forEach(item=>{
-        const card=document.createElement("div");
-        card.className="template-card";
-        card.innerHTML=`
+    list.forEach(item => {
+        const img = item.image
+            ? `<img src="${item.image}" class="outlet-img">`
+            : `<div class="outlet-placeholder"></div>`;
+
+        const short = item.description
+            ? item.description.length > 70
+                ? item.description.slice(0, 70) + "…"
+                : item.description
+            : "";
+
+        const card = document.createElement("div");
+        card.className = "download-card";
+        card.innerHTML = `
+            ${img}
             <h3>${item.title}</h3>
-            <p>${item.description||""}</p>
+            <p>${short}</p>
+            <a href="${item.url}" class="btn secondary" target="_blank">View</a>
         `;
         grid.appendChild(card);
     });
@@ -241,12 +253,13 @@ function renderOutlet(){
     document.getElementById("outlet-count").innerText = `${outletFiltered.length} results`;
 
     let totalPages = Math.ceil(outletFiltered.length / ITEMS_PER_PAGE);
-    renderPagination("outlet-pagination", outletPage, totalPages, p=>{
+    renderPagination("outlet-pagination", outletPage, totalPages, p => {
         outletPage = p;
         renderOutlet();
         smoothScrollTo("#outlet");
     });
 }
+
 function filterOutlet(){
     const q = document.getElementById("outlet-search").value.toLowerCase();
     outletFiltered = outletData.filter(item =>
