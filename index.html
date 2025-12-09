@@ -249,6 +249,247 @@ function filterOutlet(){
 
 loadOutlet();
 </script>
+<script>
+/* ================================================
+   DATA SOURCES
+================================================ */
+const outletUrl = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+const downloadsUrl = "https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
+
+const ITEMS_PER_PAGE = 10;
+
+/* ================================================
+   STATE
+================================================ */
+let outletData = [];
+let outletPage = 1;
+let outletFiltered = [];
+
+let downloadsData = [];
+let downloadsPage = 1;
+let downloadsFiltered = [];
+let activeDownloadCategory = "All";
+
+/* ================================================
+   HELPERS
+================================================ */
+function parseVersion(v) {
+    if (!v) return 0;
+    return Number(v.replace(/[^0-9.]/g, "")) || 0;
+}
+
+function smoothScrollTo(id) {
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+}
+
+/* ================================================
+   PAGINATION RENDERER
+================================================ */
+function renderPagination(containerId, page, totalPages, onClick) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+
+    const prev = document.createElement("button");
+    prev.innerText = "← Prev";
+    prev.className = "page-btn " + (page === 1 ? "disabled" : "");
+    prev.onclick = () => onClick(page - 1);
+    container.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement("button");
+        btn.innerText = i;
+        btn.className = "page-btn " + (i === page ? "active" : "");
+        btn.onclick = () => onClick(i);
+        container.appendChild(btn);
+    }
+
+    const next = document.createElement("button");
+    next.innerText = "Next →";
+    next.className = "page-btn " + (page === totalPages ? "disabled" : "");
+    next.onclick = () => onClick(page + 1);
+    container.appendChild(next);
+}
+
+/* ================================================
+   OUTLET RENDERING
+================================================ */
+function renderOutletList(list) {
+    const grid = document.getElementById("outlet-grid");
+    grid.innerHTML = "";
+
+    list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "template-card";
+        card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>${item.description || ""}</p>
+        `;
+        grid.appendChild(card);
+    });
+
+    document.getElementById("outlet-count").innerText = `${list.length} results`;
+}
+
+function applyOutletPagination() {
+    const totalPages = Math.ceil(outletFiltered.length / ITEMS_PER_PAGE);
+    const start = (outletPage - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+
+    renderOutletList(outletFiltered.slice(start, end));
+    renderPagination("outlet-pagination", outletPage, totalPages, (p) => {
+        outletPage = p;
+        applyOutletPagination();
+        smoothScrollTo("#outlet");
+    });
+}
+
+function sortOutlet(method) {
+    if (method === "az") outletFiltered.sort((a, b) => a.title.localeCompare(b.title));
+    if (method === "za") outletFiltered.sort((a, b) => b.title.localeCompare(a.title));
+    if (method === "category") outletFiltered.sort((a, b) => (a.category || "").localeCompare(b.category || ""));
+    if (method === "newest") outletFiltered.sort((a, b) => parseVersion(b.version) - parseVersion(a.version));
+}
+
+function filterOutlet() {
+    const q = document.getElementById("outlet-search").value.toLowerCase();
+    outletFiltered = outletData.filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        (item.description || "").toLowerCase().includes(q)
+    );
+
+    outletPage = 1;
+    const sortMethod = document.getElementById("outlet-sort").value;
+    sortOutlet(sortMethod);
+    applyOutletPagination();
+}
+
+async function loadOutlet() {
+    const res = await fetch(outletUrl);
+    outletData = await res.json();
+    outletFiltered = [...outletData];
+
+    filterOutlet();
+}
+
+/* ================================================
+   DOWNLOADS RENDERING
+================================================ */
+function renderDownloadsList(list) {
+    const grid = document.getElementById("downloads-grid");
+    grid.innerHTML = "";
+
+    list.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "download-card";
+        card.innerHTML = `
+            <h3>${item.title}</h3>
+            <p><strong>Version:</strong> ${item.version}</p>
+            <p>${item.description}</p>
+            <p class="cats">Categories: ${item.categories.join(", ")}</p>
+            <a href="${item.link}" target="_blank" class="btn secondary">Download</a>
+        `;
+        grid.appendChild(card);
+    });
+
+    document.getElementById("downloads-count").innerText = `${list.length} results`;
+}
+
+function applyDownloadsPagination() {
+    const totalPages = Math.ceil(downloadsFiltered.length / ITEMS_PER_PAGE);
+    const start = (downloadsPage - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+
+    renderDownloadsList(downloadsFiltered.slice(start, end));
+
+    renderPagination("downloads-pagination", downloadsPage, totalPages, (p) => {
+        downloadsPage = p;
+        applyDownloadsPagination();
+        smoothScrollTo("#downloads");
+    });
+}
+
+function sortDownloads(method) {
+    if (method === "az") downloadsFiltered.sort((a, b) => a.title.localeCompare(b.title));
+    if (method === "za") downloadsFiltered.sort((a, b) => b.title.localeCompare(a.title));
+    if (method === "category") downloadsFiltered.sort((a, b) =>
+        (a.categories[0] || "").localeCompare(b.categories[0] || "")
+    );
+    if (method === "newest") downloadsFiltered.sort((a, b) =>
+        parseVersion(b.version) - parseVersion(a.version)
+    );
+}
+
+function applyDownloadsFilters() {
+    const q = document.getElementById("downloads-search").value.toLowerCase();
+
+    downloadsFiltered = downloadsData.filter(item => {
+        const matchesSearch =
+            item.title.toLowerCase().includes(q) ||
+            item.description.toLowerCase().includes(q);
+
+        const matchesCategory =
+            activeDownloadCategory === "All" ||
+            item.categories.includes(activeDownloadCategory);
+
+        return matchesSearch && matchesCategory;
+    });
+
+    downloadsPage = 1;
+    const sortMethod = document.getElementById("downloads-sort").value;
+    sortDownloads(sortMethod);
+    applyDownloadsPagination();
+}
+
+function renderDownloadsFilterButtons() {
+    const categories = new Set(["All"]);
+    downloadsData.forEach(item =>
+        item.categories.forEach(cat => categories.add(cat))
+    );
+
+    const container = document.getElementById("downloads-filters");
+    container.innerHTML = "";
+
+    categories.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.className = "filter-btn" + (cat === "All" ? " active" : "");
+        btn.innerText = cat;
+
+        btn.onclick = () => {
+            activeDownloadCategory = cat;
+            document.querySelectorAll("#downloads-filters .filter-btn")
+                .forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            applyDownloadsFilters();
+        };
+
+        container.appendChild(btn);
+    });
+}
+
+async function loadDownloads() {
+    const res = await fetch(downloadsUrl);
+    downloadsData = await res.json();
+    downloadsFiltered = [...downloadsData];
+
+    renderDownloadsFilterButtons();
+    applyDownloadsFilters();
+}
+
+/* ================================================
+   EVENT LISTENERS
+================================================ */
+document.getElementById("outlet-search").oninput = filterOutlet;
+document.getElementById("outlet-sort").onchange = filterOutlet;
+
+document.getElementById("downloads-search").oninput = applyDownloadsFilters;
+document.getElementById("downloads-sort").onchange = applyDownloadsFilters;
+
+/* ================================================
+   INIT
+================================================ */
+loadOutlet();
+loadDownloads();
+</script>
 
 </body>
 </html>
