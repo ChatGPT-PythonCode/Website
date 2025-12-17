@@ -569,3 +569,24 @@ h2 span {
     color: #0b0719;
     box-shadow: 0 0 20px #b06cffbb;
 }
+
+/* OPTIONAL BUTTON STYLES */
+.services .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #3a7bd5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.services .btn.secondary {
+    background: #555;
+    margin-left: 6px;
+}
+
+.services .btn:hover {
+    opacity: 0.9;
+}
