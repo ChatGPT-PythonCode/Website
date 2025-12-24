@@ -644,4 +644,60 @@ h2 span {
     color: #a78bff;
     font-size: 0.85rem;
 }
+/* ============================
+   HERO CONTACT STYLING
+============================ */
+
+.hero-contact {
+    margin-top: 28px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+}
+
+.hero-contact h3 {
+    margin-bottom: 14px;
+    font-size: 1.2rem;
+}
+
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(30, 18, 60, 0.9);
+    border: 1px solid #3a226b;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.25s;
+}
+
+.contact-item:hover {
+    border-color: #b06cff;
+    box-shadow: 0 0 22px rgba(176,108,255,0.45);
+    transform: translateY(-2px);
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+}
+
+.contact-text {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Works with your click-to-contact glow */
+.contact-highlight {
+    box-shadow: 0 0 35px rgba(176,108,255,0.7);
+}
 
