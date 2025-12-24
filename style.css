@@ -590,3 +590,58 @@ h2 span {
 .services .btn:hover {
     opacity: 0.9;
 }
+
+/* ============================
+   PRICING CARDS (HERO)
+============================ */
+
+.hero-pricing-title {
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 26px;
+    margin-bottom: 28px;
+}
+
+.pricing-card {
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+    transition: 0.25s;
+}
+
+.pricing-card:hover {
+    border-color: #b06cff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(176,108,255,0.35);
+}
+
+.pricing-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+.pricing-card .price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #b06cff;
+    margin-bottom: 10px;
+}
+
+.pricing-card .desc {
+    font-size: 0.95rem;
+    color: #cfcfcf;
+    line-height: 1.5;
+}
+
+.pricing-card .desc span {
+    color: #a78bff;
+    font-size: 0.85rem;
+}
+
