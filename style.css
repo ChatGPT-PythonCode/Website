@@ -701,3 +701,48 @@ h2 span {
     box-shadow: 0 0 35px rgba(176,108,255,0.7);
 }
 
+/* ============================
+   CENTER HERO INFO BLOCK
+============================ */
+
+.hero-content {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-intro {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
+/* Center pricing title */
+.hero-pricing-title {
+    text-align: center;
+}
+
+/* Center pricing cards grid */
+.pricing-grid {
+    justify-items: center;
+}
+
+/* Ensure cards don't stretch weirdly */
+.pricing-card {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Center contact block */
+.hero-contact {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    text-align: center;
+}
+
+/* Center contact buttons */
+.contact-items {
+    align-items: center;
+}
+
