@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyberdesk Blog • luls.lol</title>
+  <link rel="stylesheet" href="style_cyberdesk.css" />
+  <style>
+    /* Page-only enhancements (keeps your theme, just improves the post-reading experience) */
+    .blog-post-view[hidden]{ display:none !important; }
+    .blog-post-view{
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.35);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+    .blog-post-header h2{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      line-height: 1.15;
+    }
+    .blog-post-body{
+      margin-top: 16px;
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+    .blog-post-body img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      display: block;
+      margin: 14px auto;
+    }
+    .blog-post-body iframe,
+    .blog-post-body video{
+      max-width: 100%;
+      border-radius: 16px;
+    }
+    .blog-post-body pre{
+      overflow:auto;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .blog-post-body a{
+      word-break: break-word;
+    }
+    .blog-toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .blog-toolbar .btn{
+      margin:0;
+    }
+    .blog-empty{
+      opacity:.85;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px dashed rgba(255,255,255,.15);
+      background: rgba(0,0,0,.25);
+    }
+  
+
+    /* =========================
+       Modern compact post cards
+    ========================== */
+    .blog-section{ text-align:left; }
+    .blog-section > h2,
+    .blog-section > .section-sub{ text-align:center; }
+
+    /* tighter grid + max width so cards don't stretch full-width */
+    .blog-section .templates-grid{
+      max-width: 1120px;
+      margin: 40px auto 0;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    /* compact card overrides (keeps theme colors) */
+    .blog-post-card{
+      padding: 18px !important;
+      border-radius: 18px !important;
+      text-align: left;
+    }
+    .blog-post-card h3{
+      font-size: 1.05rem !important;
+      line-height: 1.25;
+      margin-bottom: 8px !important;
+    }
+    .blog-post-card p{
+      color: #cfcfcf;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: calc(1.5em * 3);
+    }
+    .blog-meta{
+      font-size: 0.8rem !important;
+      margin-bottom: 6px !important;
+    }
+    .blog-img{
+      height: 140px !important;
+      border-radius: 14px !important;
+      margin-bottom: 10px !important;
+    }
+    .blog-post-card .outlet-placeholder{
+      height: 140px !important;
+      border-radius: 14px !important;
+      margin-bottom: 10px !important;
+    }
+    .blog-card-actions{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .blog-post-card .btn{
+      padding: 10px 16px !important;
+      font-size: 0.9rem;
+      border-radius: 10px;
+    }
+
+    /* modern "media left, content right" on larger screens */
+    @media (min-width: 900px){
+      .blog-post-card{
+        display:flex;
+        gap: 14px;
+        align-items: stretch;
+      }
+      .blog-post-card .blog-img{
+        width: 220px;
+        height: 140px;
+        margin: 0 !important;
+        flex: 0 0 220px;
+      }
+      .blog-post-card .outlet-placeholder{
+        width: 220px;
+        height: 140px;
+        margin: 0 !important;
+        flex: 0 0 220px;
+      }
+      .blog-post-card .blog-card-content{
+        flex: 1;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+      }
+    }
+</style>
+</head>
+
+<body>
+  <!-- Cyber Background -->
+  <div class="cyber-grid"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">luls<span>.lol</span></div>
+
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Programs</a>
+      <a href="index.html#outlet">Digital Outlet</a>
+      <a href="uncsdesk.html" class="active">Cyberdesk</a>
+      <a href="index.html#downloads">Gaming Tools</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </header>
+
+  <!-- BLOG PAGE -->
+  <main>
+    <section id="cyberdesk" class="section blog-section">
+      <h2>Cyberdesk <span>Blog</span></h2>
+      <p class="section-sub">Latest posts from UNC S Cyberdesk — styled to match this site.</p>
+
+      <!-- LIST VIEW -->
+      <div id="cyberdesk-list" class="templates-grid"></div>
+      <div id="cyberdesk-loading" class="blog-empty" style="margin-top:14px;">
+        Loading latest posts…
+      </div>
+
+      <!-- POST VIEW -->
+      <div id="cyberdesk-post" class="blog-post-view" hidden>
+        <div class="blog-toolbar">
+          <button id="back-to-list" class="btn secondary" type="button">← Back to posts</button>
+          <a id="post-canonical" class="btn secondary" href="#" target="_blank" rel="noopener" style="display:none;">Open original</a>
+        </div>
+
+        <div class="blog-post-header">
+          <div id="post-meta" class="blog-meta"></div>
+          <h2 id="post-title"></h2>
+        </div>
+
+        <div id="post-body" class="blog-post-body"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="logo">luls.lol</div>
+    <p>© 2025 luls.lol — All rights reserved.</p>
+  </footer>
+
+  <!-- CYBERDESK FEED (AUTO-POPULATE, IN-PAGE POSTS, NO IFRAMES) -->
+  <script>
+    /*
+      Uses Blogger's JSON-in-script (JSONP) feed so this works on a static site without CORS issues.
+      Feed: https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=...
+    */
+
+    const LIST_EL = document.getElementById("cyberdesk-list");
+    const LOADING_EL = document.getElementById("cyberdesk-loading");
+    const POST_EL = document.getElementById("cyberdesk-post");
+    const BACK_BTN = document.getElementById("back-to-list");
+    const POST_META = document.getElementById("post-meta");
+    const POST_TITLE = document.getElementById("post-title");
+    const POST_BODY = document.getElementById("post-body");
+    const POST_CANONICAL = document.getElementById("post-canonical");
+
+    // Map posts by their canonical URL
+    const POSTS_BY_URL = new Map();
+
+    function stripHtml(html){
+      const tmp = document.createElement("div");
+      tmp.innerHTML = html || "";
+      return (tmp.textContent || tmp.innerText || "").replace(/\s+/g, " ").trim();
+    }
+
+    function formatDate(iso){
+      if(!iso) return "";
+      try{
+        const d = new Date(iso);
+        return d.toLocaleDateString(undefined, { year:"numeric", month:"short", day:"numeric" });
+      }catch(e){ return ""; }
+    }
+
+    // Upgrade Blogger image URLs for better thumbnail quality (common patterns: /s72-c/, /s1600/, /w72-h72-p-k-no-nu/)
+    function upgradeBloggerImage(url, size){
+      if(!url) return "";
+      const target = size || 640;
+
+      // Pattern 1: .../s72-c/...
+      url = url.replace(/\/s\d+(-c)?\//, `/s${target}-c/`);
+
+      // Pattern 2: .../w72-h72-p-k-no-nu/...
+      url = url.replace(/\/(w\d+-h\d+)(-[^\/]+)?\//, `/s${target}-c/`);
+
+      // Pattern 3: ...=w72-h72... style query params (rare)
+      try{
+        const u = new URL(url);
+        if(u.searchParams.has("w") || u.searchParams.has("h")){
+          u.searchParams.set("w", target);
+          u.searchParams.set("h", Math.round(target * 0.56));
+          return u.toString();
+        }
+      }catch(e){ /* ignore */ }
+
+      return url;
+    }
+
+    // Upgrade images inside post HTML too
+    function upgradeImagesInHtml(html){
+      if(!html) return "";
+      return html
+        .replace(/(<img[^>]+src=")([^"]+)(")/gi, (m,p1,src,p3) => {
+          const up = upgradeBloggerImage(src, 1200);
+          return p1 + up + p3;
+        })
+        // remove any script tags for safety
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+    }
+
+    function showList(){
+      POST_EL.hidden = true;
+      LIST_EL.style.display = "";
+      LOADING_EL.style.display = POSTS_BY_URL.size ? "none" : "";
+      document.title = "Cyberdesk Blog • luls.lol";
+      // clear post hash
+      if(location.hash.startsWith("#p=")){
+        history.replaceState(null, "", location.pathname);
+      }
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+
+    function showPost(entry){
+      if(!entry) return;
+
+      LIST_EL.style.display = "none";
+      LOADING_EL.style.display = "none";
+      POST_EL.hidden = false;
+
+      const url = entry._canonicalUrl;
+      const title = entry.title?.$t || "Untitled";
+      const published = entry.published?.$t || entry.updated?.$t || "";
+      const dateStr = formatDate(published);
+
+      POST_META.textContent = (dateStr ? (dateStr + " • ") : "") + "uncscyberdesk";
+      POST_TITLE.textContent = title;
+
+      // Use full content when available
+      const rawHtml = entry.content?.$t || entry.summary?.$t || "";
+      POST_BODY.innerHTML = upgradeImagesInHtml(rawHtml);
+
+      // optional canonical link (kept secondary; primary reading stays in-page)
+      if(url){
+        POST_CANONICAL.href = url;
+        POST_CANONICAL.style.display = "";
+      } else {
+        POST_CANONICAL.style.display = "none";
+      }
+
+      document.title = title + " • Cyberdesk Blog";
+
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+
+    function openFromHash(){
+      if(!location.hash.startsWith("#p=")) return false;
+      const url = decodeURIComponent(location.hash.slice(3));
+      const entry = POSTS_BY_URL.get(url);
+      if(entry){
+        showPost(entry);
+        return true;
+      }
+      return false;
+    }
+
+    function buildCard(entry){
+      const title = entry.title?.$t || "Untitled";
+      const published = entry.published?.$t || entry.updated?.$t || "";
+      const dateStr = formatDate(published);
+
+      const canonical = (entry.link || []).find(l => l.rel === "alternate")?.href || "";
+      entry._canonicalUrl = canonical;
+
+      const contentHtml = entry.content?.$t || entry.summary?.$t || "";
+      const excerpt = stripHtml(contentHtml).slice(0, 160) + (stripHtml(contentHtml).length > 160 ? "…" : "");
+
+      let thumb = entry.media$thumbnail?.url || extractFirstImage(contentHtml) || "";
+      thumb = upgradeBloggerImage(thumb, 1200);
+
+      const card = document.createElement("div");
+      card.className = "download-card blog-post-card";
+      card.setAttribute("role","article");
+
+      const imgHtml = thumb
+        ? `<img class="blog-img" src="${thumb}" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="">`
+        : `<div class="outlet-placeholder"></div>`;
+
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="blog-card-content">
+          <div class="blog-meta">${dateStr ? dateStr + " • " : ""}uncscyberdesk</div>
+          <h3>${title}</h3>
+          <p>${excerpt}</p>
+          <div class="blog-card-actions">
+            <button class="btn secondary open-post" type="button">Read</button>
+          </div>
+        </div>
+      `;
+
+      // Open in-page (no off-site routing)
+      card.querySelector(".open-post").addEventListener("click", () => {
+        if(!canonical) return;
+        location.hash = "p=" + encodeURIComponent(canonical);
+        // show immediately if already in memory
+        const found = POSTS_BY_URL.get(canonical);
+        if(found) showPost(found);
+      });
+
+      // Make the whole card clickable (but ignore button clicks)
+      card.addEventListener("click", (e) => {
+        if(e.target && (e.target.closest && e.target.closest("button, a"))) return;
+        const btn = card.querySelector(".open-post");
+        if(btn) btn.click();
+      });
+
+      return { card, canonical };
+    }
+
+    function renderCyberdesk(json){
+      try{
+        LIST_EL.innerHTML = "";
+        POSTS_BY_URL.clear();
+
+        const entries = (json && json.feed && json.feed.entry) ? json.feed.entry : [];
+        if(!entries.length){
+          LOADING_EL.textContent = "No posts found.";
+          return;
+        }
+
+        entries.forEach(entry => {
+          const { card, canonical } = buildCard(entry);
+          if(canonical) POSTS_BY_URL.set(canonical, entry);
+          LIST_EL.appendChild(card);
+        });
+
+        // After list is ready, open a post if the URL hash requested it
+        if(!openFromHash()){
+          LOADING_EL.style.display = "none";
+        }
+      }catch(err){
+        console.error(err);
+        LOADING_EL.textContent = "Couldn't load posts right now.";
+      }
+    }
+
+    BACK_BTN.addEventListener("click", showList);
+    window.addEventListener("hashchange", () => {
+      if(!openFromHash()){
+        showList();
+      }
+    });
+
+    // Load JSONP feed (bypasses CORS)
+    (function loadCyberdesk(){
+      const s = document.createElement("script");
+      s.src = "https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=12";
+      document.body.appendChild(s);
+    })();
+  </script>
+
+</body>
+</html>
