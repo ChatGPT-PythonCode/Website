@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>luls.lol - Tech Support & Tools</title>
+    <link rel="stylesheet" href="style_cyberdesk.css" />
+</head>
+<body>
+
+<!-- Cyber Background -->
+<div class="cyber-grid"></div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">luls<span>.lol</span></div>
+
+    <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#services">Programs</a>
+        <a href="#outlet">Digital Outlet</a>
+        <a href="#cyberdesk">Cyberdesk</a>
+        <a href="#downloads">Gaming Tools</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <a class="cta-btn" href="#downloads">Get Tools</a>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+    <a onclick="closeMenu()" href="#home">Home</a>
+    <a onclick="closeMenu()" href="#services">Services</a>
+    <a onclick="closeMenu()" href="#outlet">Digital Outlet</a>
+    <a onclick="closeMenu()" href="#cyberdesk">Cyberdesk</a>
+    <a onclick="closeMenu()" href="#downloads">Gaming Tools</a>
+    <a onclick="closeMenu()" href="#about">About</a>
+</div>
+
+<section id="home" class="hero">
+  <div class="hero-content">
+
+    <h1>Fixing, Protecting & Powering Your <span>Digital Life</span></h1>
+
+    <p class="hero-intro">
+      We offer reliable, one-on-one tech support for home and small office needs across Nevada.
+      Whether you’re setting up new equipment or learning how to use your tech with confidence,
+      I’ve got you covered.
+    </p>
+<div class="hero-contact" id="contact-info">
+  <h3>Contact</h3>
+
+  <div class="contact-items">
+    <a class="contact-item" href="tel:17026260895">
+      <span class="contact-icon">📞</span>
+      <span class="contact-text">702-626-0895</span>
+    </a>
+
+    <a class="contact-item" href="mailto:zerobytewaste@proton.me">
+      <span class="contact-icon">📧</span>
+      <span class="contact-text">zerobytewaste@proton.me</span>
+    </a>
+  </div>
+</div>
+
+      
+    <!-- SERVICES CARD -->
+<h2 class="hero-pricing-title">Services & Pricing</h2>
+
+<div class="pricing-grid">
+
+  <div class="pricing-card">
+    <h3>🖥️ PC Setup</h3>
+    <p class="price">$75</p>
+    <p class="desc">
+      Initial setup, updates, basic optimization, and system check.
+    </p>
+  </div>
+
+  <div class="pricing-card">
+    <h3>📺 TV Setup</h3>
+    <p class="price">$65</p>
+    <p class="desc">
+      Smart TV configuration, streaming apps, and device connections.
+      <span>(Mounting not included.)</span>
+    </p>
+  </div>
+
+  <div class="pricing-card">
+    <h3>🖨️ Printer Setup</h3>
+    <p class="price">$50</p>
+    <p class="desc">
+      Wired or wireless setup, driver installation, and test printing.
+    </p>
+  </div>
+
+  <div class="pricing-card">
+    <h3>🎓 One-on-One Tech Education</h3>
+    <p class="price">$60 / hour</p>
+    <p class="desc">
+      Personalized guidance to help you use your devices and software with confidence.
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- SERVICES -->
+<section id="services" class="services section">
+    <h2>Our <span>Programs</span></h2>
+    <p class="section-sub">Tech repair, cyber cleanup, automation, and more.</p>
+
+    <div class="services-grid">
+        <div class="card">
+            <h3>🛠️ Win11 Debloater</h3>
+            <p>optimization.</p>
+            <a class="btn" href="https://github.com/ChatGPT-PythonCode/LulsProtect/releases/download/virusscanner/Win11Debloater.exe" target="_blank">
+                Windows Tools
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🦠 Virus Removal</h3>
+            <p>Deep cleaning & protection.</p>
+            <a class="btn" href="https://github.com/ChatGPT-PythonCode/LulsProtect/releases/download/virusscanner/LulsProtect.exe" target="_blank">
+                LulsProtect
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>⚙ Custom Software</h3>
+            <p>Automation & bots.</p>
+            <a class="btn" href="https://luls.lol/#outlet" target="_blank">
+                Digital Assets and Programs.
+            </a>
+            <a class="btn secondary" href="https://luls.lol/#outlet" target="_blank">
+                Templates, Programs, Streamer Assets
+            </a>
+        </div>
+
+        <div class="card">
+            <h3>🎮 Game Tools</h3>
+            <p>Tweaks, FPS boosters.</p>
+            <a class="btn" href="https://luls.lol/#downloads" target="_blank">
+                Gaming tools.
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- DIGITAL OUTLET -->
+<section id="outlet" class="templates section">
+    <h2>Digital <span>Outlet</span></h2>
+    <p class="section-sub">Website templates, tools, utilities.</p>
+
+    <!-- Search + Sort Row -->
+    <div class="search-sort-row">
+        <input id="outlet-search" class="search-box" type="text" placeholder="Search Outlet..." />
+        <select id="outlet-sort" class="sort-box">
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+            <option value="category">Category</option>
+            <option value="newest">Newest</option>
+        </select>
+    </div>
+
+    <div id="outlet-count" class="results-count"></div>
+
+    <!-- Outlet Grid -->
+    <div id="outlet-grid" class="templates-grid"></div>
+
+    <!-- Pagination -->
+    <div id="outlet-pagination" class="pagination"></div>
+</section>
+
+
+
+<!-- CYBERDESK BLOG -->
+<section id="cyberdesk" class="section blog-section">
+    <h2>Cyberdesk <span>Blog</span></h2>
+    <p class="section-sub">Latest posts from https://uncscyberdesk.blogspot.com/</p>
+
+    <div id="cyberdesk-grid" class="templates-grid"></div>
+
+    <div class="blog-actions">
+        <a class="btn secondary" href="https://uncscyberdesk.blogspot.com/" target="_blank" rel="noopener">View the full blog</a>
+    </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section id="downloads" class="downloads-section section">
+    <h2>Downloads</h2>
+    <p class="section-sub">Programs, bots, utilities & more.</p>
+
+    <!-- Search + Sort Row -->
+    <div class="search-sort-row">
+        <input id="downloads-search" class="search-box" type="text" placeholder="Search Downloads..." />
+        <select id="downloads-sort" class="sort-box">
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+            <option value="category">Category</option>
+            <option value="newest">Newest</option>
+        </select>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons" id="downloads-filters"></div>
+
+    <div id="downloads-count" class="results-count"></div>
+
+    <!-- Downloads Grid -->
+    <div id="downloads-grid" class="downloads-grid"></div>
+
+    <!-- Pagination -->
+    <div id="downloads-pagination" class="pagination"></div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="about section">
+    <h2>About <span>luls.lol</span></h2>
+    <p>We build tools, fix computers, and create cyber-themed software for everyone.</p>
+</section>
+  <!-- LULS LOGO — UNCHANGED -->
+  <div class="hero-graphic">
+    <div class="luls-logo">
+      <span>L</span><span>U</span><span>L</span><span>S</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="logo">luls.lol</div>
+    <p>© 2025 luls.lol — All rights reserved.</p>
+</footer>
+
+<!-- CRISP CHAT -->
+<script type="text/javascript">
+window.$crisp=[];window.CRISP_WEBSITE_ID="b73be199-2dc0-4003-8785-48f37ac612a7";
+(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+</script>
+
+<!-- NAV JS -->
+<script>
+function toggleMenu(){document.getElementById("mobile-nav").classList.toggle("open");}
+function closeMenu(){document.getElementById("mobile-nav").classList.remove("open");}
+</script>
+
+<!-- ============================================
+     FINAL WORKING OUTLET + DOWNLOAD SYSTEM
+     (SORT + SEARCH + FILTER + PAGINATION)
+============================================ -->
+<script>
+const outletUrl = "https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
+const downloadsUrl = "https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
+
+const ITEMS_PER_PAGE = 10;
+
+/* OUTLET STATE */
+let outletData = [];
+let outletFiltered = [];
+let outletPage = 1;
+
+/* DOWNLOADS STATE */
+let downloadsData = [];
+let downloadsFiltered = [];
+let downloadsPage = 1;
+let activeDownloadCategory = "All";
+
+/* HELPERS */
+function parseVersion(v){
+    if (!v) return 0;
+    return Number(v.replace(/[^0-9.]/g, "")) || 0;
+}
+function smoothScrollTo(id){
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+}
+
+/* PAGINATION */
+function paginate(list, page){
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    return list.slice(start, start + ITEMS_PER_PAGE);
+}
+function renderPagination(containerId, page, totalPages, onClick){
+    const container = document.getElementById(containerId);
+    container.innerHTML = "";
+
+    let prev = document.createElement("button");
+    prev.innerText = "← Prev";
+    prev.className = "page-btn " + (page === 1 ? "disabled" : "");
+    prev.onclick = () => onClick(page - 1);
+    container.appendChild(prev);
+
+    for (let i = 1; i <= totalPages; i++){
+        let btn = document.createElement("button");
+        btn.innerText = i;
+        btn.className = "page-btn " + (i === page ? "active" : "");
+        btn.onclick = () => onClick(i);
+        container.appendChild(btn);
+    }
+
+    let next = document.createElement("button");
+    next.innerText = "Next →";
+    next.className = "page-btn " + (page === totalPages ? "disabled" : "");
+    next.onclick = () => onClick(page + 1);
+    container.appendChild(next);
+}
+
+/* OUTLET */
+function sortOutlet(method){
+    if (method === "az") outletFiltered.sort((a,b)=>a.title.localeCompare(b.title));
+    if (method === "za") outletFiltered.sort((a,b)=>b.title.localeCompare(a.title));
+    if (method === "category") outletFiltered.sort((a,b)=>(a.category||"").localeCompare(b.category||""));
+    if (method === "newest") outletFiltered.sort((a,b)=>parseVersion(b.version) - parseVersion(a.version));
+}
+function renderOutlet() {
+    const grid = document.getElementById("outlet-grid");
+    grid.innerHTML = "";
+
+    let list = paginate(outletFiltered, outletPage);
+
+    list.forEach(item => {
+        const img = item.image
+            ? `<img src="${item.image}" class="outlet-img">`
+            : `<div class="outlet-placeholder"></div>`;
+
+        const short = item.description
+            ? item.description.length > 70
+                ? item.description.slice(0, 70) + "…"
+                : item.description
+            : "";
+
+        const card = document.createElement("div");
+        card.className = "download-card";
+        card.innerHTML = `
+            ${img}
+            <h3>${item.title}</h3>
+            <p>${short}</p>
+            <a href="${item.url}" class="btn secondary" target="_blank">View</a>
+        `;
+        grid.appendChild(card);
+    });
+
+    document.getElementById("outlet-count").innerText = `${outletFiltered.length} results`;
+
+    let totalPages = Math.ceil(outletFiltered.length / ITEMS_PER_PAGE);
+    renderPagination("outlet-pagination", outletPage, totalPages, p => {
+        outletPage = p;
+        renderOutlet();
+        smoothScrollTo("#outlet");
+    });
+}
+
+function filterOutlet(){
+    const q = document.getElementById("outlet-search").value.toLowerCase();
+    outletFiltered = outletData.filter(item =>
+        item.title.toLowerCase().includes(q) ||
+        (item.description||"").toLowerCase().includes(q)
+    );
+    sortOutlet(document.getElementById("outlet-sort").value);
+    outletPage = 1;
+    renderOutlet();
+}
+async function loadOutlet(){
+    const res = await fetch(outletUrl);
+    outletData = await res.json();
+    outletFiltered = [...outletData];
+    renderOutlet();
+}
+
+/* DOWNLOADS */
+function renderDownloadsFilters(){
+    const cats = new Set(["All"]);
+    downloadsData.forEach(d => d.categories.forEach(c=>cats.add(c)));
+
+    const container = document.getElementById("downloads-filters");
+    container.innerHTML = "";
+
+    cats.forEach(cat=>{
+        let btn = document.createElement("button");
+        btn.className = "filter-btn" + (cat==="All"?" active":"");
+        btn.innerText = cat;
+        btn.onclick = ()=>{
+            activeDownloadCategory = cat;
+            document.querySelectorAll("#downloads-filters .filter-btn").forEach(b=>b.classList.remove("active"));
+            btn.classList.add("active");
+            filterDownloads();
+        };
+        container.appendChild(btn);
+    });
+}
+function sortDownloads(method){
+    if(method==="az") downloadsFiltered.sort((a,b)=>a.title.localeCompare(b.title));
+    if(method==="za") downloadsFiltered.sort((a,b)=>b.title.localeCompare(a.title));
+    if(method==="category") downloadsFiltered.sort((a,b)=>(a.categories[0]||"").localeCompare(b.categories[0]||""));
+    if(method==="newest") downloadsFiltered.sort((a,b)=>parseVersion(b.version)-parseVersion(a.version));
+}
+function renderDownloads(){
+    const grid = document.getElementById("downloads-grid");
+    grid.innerHTML = "";
+
+    let list = paginate(downloadsFiltered, downloadsPage);
+
+    list.forEach(item=>{
+        const card=document.createElement("div");
+        card.className="download-card";
+        card.innerHTML=`
+            <h3>${item.title}</h3>
+            <p><strong>Version:</strong> ${item.version}</p>
+            <p>${item.description}</p>
+            <p class="cats">${item.categories.join(", ")}</p>
+            <a href="${item.link}" class="btn secondary" target="_blank">Download</a>
+        `;
+        grid.appendChild(card);
+    });
+
+    document.getElementById("downloads-count").innerText = `${downloadsFiltered.length} results`;
+
+    let totalPages = Math.ceil(downloadsFiltered.length / ITEMS_PER_PAGE);
+    renderPagination("downloads-pagination", downloadsPage, totalPages, p=>{
+        downloadsPage=p;
+        renderDownloads();
+        smoothScrollTo("#downloads");
+    });
+}
+function filterDownloads(){
+    const q = document.getElementById("downloads-search").value.toLowerCase();
+    downloadsFiltered = downloadsData.filter(item=>{
+        let matchSearch =
+            item.title.toLowerCase().includes(q) ||
+            item.description.toLowerCase().includes(q);
+
+        let matchCategory =
+            activeDownloadCategory === "All" ||
+            item.categories.includes(activeDownloadCategory);
+
+        return matchSearch && matchCategory;
+    });
+    sortDownloads(document.getElementById("downloads-sort").value);
+    downloadsPage = 1;
+    renderDownloads();
+}
+async function loadDownloads(){
+    const res = await fetch(downloadsUrl);
+    downloadsData = await res.json();
+    downloadsFiltered = [...downloadsData];
+    renderDownloadsFilters();
+    renderDownloads();
+}
+
+/* LISTENERS */
+document.getElementById("outlet-search").oninput = filterOutlet;
+document.getElementById("outlet-sort").onchange = filterOutlet;
+
+document.getElementById("downloads-search").oninput = filterDownloads;
+document.getElementById("downloads-sort").onchange = filterDownloads;
+
+/* INIT */
+loadOutlet();
+loadDownloads();
+</script>
+
+
+
+<!-- CYBERDESK FEED (AUTO-POPULATE) -->
+<script>
+/*
+  Uses Blogger's JSON-in-script (JSONP) feed so this works on a static site without CORS issues.
+  You can tweak max-results, or filter by label:
+  https://uncscyberdesk.blogspot.com/feeds/posts/default/-/LABEL?alt=json-in-script&callback=renderCyberdesk
+*/
+function cyberdeskStripHtml(html){
+  const div = document.createElement("div");
+  div.innerHTML = html || "";
+  return (div.textContent || div.innerText || "").replace(/\s+/g, " ").trim();
+}
+
+function cyberdeskFirstImage(html){
+  const m = /<img[^>]+src=["']([^"']+)["']/i.exec(html || "");
+  return m ? m[1] : "";
+}
+
+function renderCyberdesk(data){
+  const grid = document.getElementById("cyberdesk-grid");
+  if (!grid) return;
+
+  const entries = (data && data.feed && data.feed.entry) ? data.feed.entry : [];
+  grid.innerHTML = "";
+
+  if (!entries.length){
+    grid.innerHTML = '<div class="download-card"><h3>No posts yet</h3><p>Nothing to show right now.</p></div>';
+    return;
+  }
+
+  entries.forEach(e => {
+    const title = (e.title && e.title.$t) ? e.title.$t : "Untitled";
+    const linkObj = (e.link || []).find(l => l.rel === "alternate") || (e.link || [])[0];
+    const url = linkObj && linkObj.href ? linkObj.href : "https://uncscyberdesk.blogspot.com/";
+    const published = (e.published && e.published.$t) ? e.published.$t : ((e.updated && e.updated.$t) ? e.updated.$t : "");
+    let dateStr = "";
+    try {
+      dateStr = published ? new Date(published).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" }) : "";
+    } catch (err) {}
+
+    const html = (e.summary && e.summary.$t) ? e.summary.$t : ((e.content && e.content.$t) ? e.content.$t : "");
+    const text = cyberdeskStripHtml(html);
+    const excerpt = text.length > 170 ? text.slice(0, 170) + "…" : text;
+
+    const thumb = (e.media$thumbnail && e.media$thumbnail.url) ? e.media$thumbnail.url : cyberdeskFirstImage(html);
+
+    const card = document.createElement("div");
+    card.className = "download-card blog-post-card";
+    card.innerHTML = `
+      ${thumb ? `<img class="blog-img" src="${thumb}" alt="">` : `<div class="outlet-placeholder"></div>`}
+      <div class="blog-meta">${dateStr ? dateStr + " • " : ""}uncscyberdesk</div>
+      <h3>${title}</h3>
+      <p>${excerpt}</p>
+      <a class="btn secondary" href="${url}" target="_blank" rel="noopener">Read post</a>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// Load JSONP feed (bypasses CORS)
+(function loadCyberdesk(){
+  const s = document.createElement("script");
+  s.src = "https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=9";
+  document.body.appendChild(s);
+})();
+</script>
+
+
+</body>
+</html>
