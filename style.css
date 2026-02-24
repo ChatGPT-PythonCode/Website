@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* ======================================================
    RESET + GLOBAL
 ====================================================== */
@@ -943,3 +945,78 @@ h2 span {
     }
 }
 
+
+/* ======================================================
+   CYBERDESK BLOG SECTION
+====================================================== */
+.blog-section {
+    text-align: center;
+}
+
+.blog-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.blog-meta {
+    font-size: 0.85rem;
+    color: #c8a5ff;
+    margin-bottom: 8px;
+}
+
+.blog-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Small helper for section subtitles used across the template */
+.section-sub {
+    margin-top: 10px;
+    color: #cfcfcf;
+}
+
+
+/* ======================================================
+   RESPONSIVE POLISH (mobile + desktop)
+====================================================== */
+
+/* Better default text sizing */
+body { line-height: 1.55; }
+
+/* Keep layout comfortable on very wide screens */
+.section { max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+/* Inputs should never overflow */
+input, select, textarea { max-width: 100%; }
+
+/* Mobile spacing + typography */
+@media (max-width: 900px) {
+  .section { padding: 80px 6%; }
+  .header { padding: 18px 6%; }
+  .nav { gap: 18px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 70px 5%; }
+  .header { padding: 16px 5%; }
+  .mobile-nav { top: 64px; }
+  .hero { padding: 120px 5% 90px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .templates-grid, .services-grid, .downloads-grid { gap: 18px; }
+  .card, .download-card { padding: 22px; }
+  .outlet-img, .blog-img, .outlet-placeholder { height: 160px; }
+}
+
+/* Slightly larger cards on big screens */
+@media (min-width: 1200px) {
+  .templates-grid, .services-grid, .downloads-grid { gap: 32px; }
+}
+
+/* Make search input look nice on pages that only use the input without a wrapper */
+.search-box { width: 100%; max-width: 650px; margin: 0 auto 20px; display: block; }
+
+/* Footer breathing room */
+.footer { padding: 42px 8%; }
