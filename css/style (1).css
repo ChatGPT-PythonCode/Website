@@ -1,0 +1,1022 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ======================================================
+   RESET + GLOBAL
+====================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #070512;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.section {
+    padding: 100px 8%;
+}
+
+h2 span {
+    color: #b06cff;
+}
+
+/* ======================================================
+   CYBER GRID BACKGROUND
+====================================================== */
+.cyber-grid {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        transparent 0,
+        transparent 48px,
+        rgba(150, 75, 255, 0.08) 50px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 48px,
+        rgba(150, 75, 255, 0.08) 50px
+    );
+    opacity: 0.15;
+    animation: gridScroll 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes gridScroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(60px); }
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+.header {
+    width: 100%;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 7, 25, 0.75);
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+.logo span {
+    color: #b06cff;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.2s;
+    font-weight: 500;
+}
+.nav a:hover {
+    color: #b06cff;
+}
+
+/* CTA Button */
+.cta-btn {
+    padding: 10px 20px;
+    border: 1px solid #b06cff;
+    border-radius: 8px;
+    color: #b06cff;
+    transition: 0.3s;
+    text-decoration: none;
+}
+.cta-btn:hover {
+    background: #b06cff;
+    color: #0b0719;
+}
+
+/* Mobile Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.hamburger div {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background: #130b2a;
+    padding: 22px 8%;
+    position: fixed;
+    width: 100%;
+    top: 70px;
+    left: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-top: 1px solid #2a1f4f;
+    z-index: 9999;
+}
+
+.mobile-nav a {
+    padding: 14px 0;
+    color: #fff;
+    border-bottom: 1px solid #281e45;
+    text-decoration: none;
+}
+
+.mobile-nav.open {
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    .nav, .cta-btn { display: none; }
+    .hamburger { display: flex; }
+}
+
+@media (min-width: 601px) {
+    .mobile-nav { display: none !important; }
+}
+
+/* ======================================================
+   HERO SECTION
+====================================================== */
+.hero {
+    padding: 150px 8% 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    max-width: 550px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+}
+
+.hero-content p {
+    margin-top: 20px;
+    color: #cfcfcf;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.primary {
+    background: #b06cff;
+    color: #0b0719;
+}
+.secondary {
+    border: 1px solid #b06cff;
+    color: #b06cff;
+}
+
+/* Floating Cube */
+.hero-graphic {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+.hacker-cube {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #6f3cff, #b06cff);
+    animation: float 3s ease-in-out infinite, pulse 4s infinite;
+    box-shadow: 0 0 30px rgba(176,108,255,0.45);
+}
+
+.glow-circle {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background: radial-gradient(circle, #b06cff44, transparent);
+    border-radius: 50%;
+    filter: blur(25px);
+    top: -30px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #b06cff; }
+    100% { box-shadow: 0 0 34px #b06cff; }
+}
+
+@media (max-width: 600px) {
+    .hero { text-align: center; }
+}
+
+/* ======================================================
+   CARD STYLES (Shared)
+====================================================== */
+.card,
+.template-card,
+.tool-panel,
+.download-card {
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    padding: 28px;
+    border-radius: 16px;
+    transition: 0.25s;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+}
+
+.card:hover,
+.template-card:hover,
+.tool-panel:hover,
+.download-card:hover {
+    border-color: #b06cff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(176,108,255,0.35);
+}
+
+.card h3,
+.template-card h3,
+.tool-panel h3,
+.download-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+/* ======================================================
+   TEMPLATES + SERVICES GRIDS
+====================================================== */
+.templates-grid,
+.services-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+/* ======================================================
+   TOOLS DASHBOARD
+====================================================== */
+.dashboard-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+}
+
+.hack-btn {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid #b06cff;
+    border-radius: 8px;
+    color: #b06cff;
+    font-weight: 600;
+    transition: 0.25s;
+}
+.hack-btn:hover {
+    background: #b06cff;
+    color: #0b0719;
+}
+
+/* ======================================================
+   DOWNLOADS SECTION
+====================================================== */
+.downloads-section {
+    text-align: center;
+}
+
+/* Search bar */
+.download-search {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px 20px;
+    margin: 25px auto;
+    border-radius: 12px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.85);
+    color: white;
+    outline: none;
+    box-shadow: 0 0 22px rgba(176,108,255,0.15);
+}
+.download-search::placeholder {
+    color: #8d7aa8;
+}
+
+/* Filter buttons */
+.filter-buttons {
+    margin: 20px 0 35px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.85);
+    color: #c99bff;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: inset 0 0 15px rgba(120,50,200,0.3);
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background: #b06cff;
+    color: #0b0719;
+    border-color: #b06cff;
+    box-shadow: 0 0 20px rgba(176,108,255,0.5);
+}
+
+.downloads-grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.download-card .details {
+    font-size: 0.85rem;
+    color: #bfbfbf;
+}
+
+.download-card .cats {
+    font-size: 0.85rem;
+    color: #b06cff;
+    margin-bottom: 10px;
+}
+
+/* ======================================================
+   ABOUT
+====================================================== */
+.about {
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* ======================================================
+   FOOTER
+====================================================== */
+.footer {
+    background: #0a0715;
+    text-align: center;
+    padding: 50px 8%;
+    color: #bbb;
+}
+
+/* Digital Outlet Image */
+.outlet-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+/* Neon placeholder when no image is provided */
+.outlet-placeholder {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(145deg,#6f3cff,#b06cff);
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(176,108,255,0.35);
+    margin-bottom: 12px;
+}
+
+/* ----------------------------------
+   HACKER LOGO “LULS”
+----------------------------------- */
+
+.luls-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: 18px;
+    color: #b06cff;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 40px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    /* Base glow */
+    text-shadow:
+        0 0 12px #b06cff,
+        0 0 20px #9a4cff,
+        0 0 40px #7c3bff;
+    
+    animation: logoPulse 3s infinite ease-in-out;
+}
+
+/* Individual letter flicker */
+.luls-logo span {
+    display: inline-block;
+    animation: glitchFlicker 2.5s infinite steps(2, end);
+}
+
+/* Random per-letter delays for real hacker feel */
+.luls-logo span:nth-child(1) { animation-delay: 0.1s; }
+.luls-logo span:nth-child(2) { animation-delay: 0.3s; }
+.luls-logo span:nth-child(3) { animation-delay: 0.5s; }
+.luls-logo span:nth-child(4) { animation-delay: 0.2s; }
+
+/* Pulse breathing glow */
+@keyframes logoPulse {
+    0% { text-shadow: 0 0 10px #b06cff, 0 0 30px #7c3bff; }
+    50% { text-shadow: 0 0 20px #d0a6ff, 0 0 50px #b06cff; }
+    100% { text-shadow: 0 0 10px #b06cff, 0 0 30px #7c3bff; }
+}
+
+/* Hacker flicker scan/glitch */
+@keyframes glitchFlicker {
+    0% { opacity: 1; transform: translate(0,0); }
+    10% { opacity: 0.85; transform: translate(-1px,0); }
+    20% { opacity: 1; transform: translate(0,0); }
+    30% { opacity: 0.7; transform: translate(1px,-1px); }
+    40% { opacity: 1; }
+    50% { opacity: 0.9; transform: translate(-1px,1px); }
+    60% { opacity: 1; transform: translate(0,0); }
+    70% { opacity: 0.8; }
+    80% { opacity: 1; }
+    90% { opacity: 0.95; }
+    100% { opacity: 1; }
+}
+
+/* Mobile scaling */
+@media (max-width: 600px) {
+    .luls-logo {
+        font-size: 3rem;
+        letter-spacing: 10px;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+/* ========== SEARCH + SORT UI ========== */
+.search-sort-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.search-box,
+.sort-box {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.85);
+    color: white;
+    box-shadow: 0 0 15px rgba(176,108,255,0.2);
+}
+
+.search-box::placeholder {
+    color: #9e85b8;
+}
+
+/* ========== RESULTS COUNT ========== */
+.results-count {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #c8a5ff;
+    font-size: 1rem;
+}
+
+/* ========== PAGINATION ========== */
+.pagination {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #b06cff;
+    color: #b06cff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.page-btn:hover {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 20px #b06cffcc;
+}
+
+.page-btn.active {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 25px #b06cffee;
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* Filter Buttons (Downloads Section) */
+.filter-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #b06cff;
+    background: rgba(20, 12, 40, 0.9);
+    color: #c99bff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #b06cff;
+    color: #0b0719;
+    box-shadow: 0 0 20px #b06cffbb;
+}
+
+/* OPTIONAL BUTTON STYLES */
+.services .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #3a7bd5;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.services .btn.secondary {
+    background: #555;
+    margin-left: 6px;
+}
+
+.services .btn:hover {
+    opacity: 0.9;
+}
+
+/* ============================
+   PRICING CARDS (HERO)
+============================ */
+
+.hero-pricing-title {
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 26px;
+    margin-bottom: 28px;
+}
+
+.pricing-card {
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+    transition: 0.25s;
+}
+
+.pricing-card:hover {
+    border-color: #b06cff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(176,108,255,0.35);
+}
+
+.pricing-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+.pricing-card .price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #b06cff;
+    margin-bottom: 10px;
+}
+
+.pricing-card .desc {
+    font-size: 0.95rem;
+    color: #cfcfcf;
+    line-height: 1.5;
+}
+
+.pricing-card .desc span {
+    color: #a78bff;
+    font-size: 0.85rem;
+}
+/* ============================
+   HERO CONTACT STYLING
+============================ */
+
+.hero-contact {
+    margin-top: 28px;
+    padding: 20px 22px;
+    border-radius: 16px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+}
+
+.hero-contact h3 {
+    margin-bottom: 14px;
+    font-size: 1.2rem;
+}
+
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(30, 18, 60, 0.9);
+    border: 1px solid #3a226b;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.25s;
+}
+
+.contact-item:hover {
+    border-color: #b06cff;
+    box-shadow: 0 0 22px rgba(176,108,255,0.45);
+    transform: translateY(-2px);
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+}
+
+.contact-text {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Works with your click-to-contact glow */
+.contact-highlight {
+    box-shadow: 0 0 35px rgba(176,108,255,0.7);
+}
+
+/* ============================
+   CENTER HERO INFO BLOCK
+============================ */
+
+.hero-content {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-intro {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
+/* Center pricing title */
+.hero-pricing-title {
+    text-align: center;
+}
+
+/* Center pricing cards grid */
+.pricing-grid {
+    justify-items: center;
+}
+
+/* Ensure cards don't stretch weirdly */
+.pricing-card {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Center contact block */
+.hero-contact {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 420px;
+    text-align: center;
+}
+
+/* Center contact buttons */
+.contact-items {
+    align-items: center;
+}
+
+/* ======================================================
+   HERO LAYOUT — OPTION 1 (TRUE CENTERED)
+   Fully centers hero content and removes dead space
+====================================================== */
+
+/* HERO CONTAINER */
+.hero {
+    padding: 150px 8% 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* HERO CONTENT */
+.hero-content {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* HEADLINE */
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.15;
+}
+
+/* INTRO PARAGRAPH */
+.hero-intro {
+    margin: 22px auto 0;
+    max-width: 720px;
+    color: #cfcfcf;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ============================
+   SERVICES & PRICING
+============================ */
+
+.hero-pricing-title {
+    margin-top: 48px;
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+/* PRICING GRID */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    justify-items: center;
+    margin-bottom: 36px;
+}
+
+/* PRICING CARD */
+.pricing-card {
+    width: 100%;
+    max-width: 300px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    padding: 26px;
+    border-radius: 16px;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.pricing-card:hover {
+    border-color: #b06cff;
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(176,108,255,0.35);
+}
+
+.pricing-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+.pricing-card .price {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #b06cff;
+    margin-bottom: 10px;
+}
+
+.pricing-card .desc {
+    font-size: 0.95rem;
+    color: #cfcfcf;
+    line-height: 1.5;
+}
+
+.pricing-card .desc span {
+    color: #a78bff;
+    font-size: 0.85rem;
+}
+
+/* ============================
+   HERO CONTACT (CENTERED PANEL)
+============================ */
+
+.hero-contact {
+    margin: 0 auto;
+    max-width: 420px;
+    padding: 22px;
+    border-radius: 16px;
+    background: rgba(20, 12, 40, 0.85);
+    border: 1px solid #3a226b;
+    box-shadow: 0 0 18px rgba(150, 75, 255, 0.15);
+    text-align: center;
+}
+
+.hero-contact h3 {
+    margin-bottom: 14px;
+    font-size: 1.2rem;
+}
+
+/* CONTACT ITEMS */
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.contact-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(30, 18, 60, 0.9);
+    border: 1px solid #3a226b;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.25s;
+}
+
+.contact-item:hover {
+    border-color: #b06cff;
+    box-shadow: 0 0 22px rgba(176,108,255,0.45);
+    transform: translateY(-2px);
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+}
+
+.contact-text {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Click highlight from pricing cards */
+.contact-highlight {
+    box-shadow: 0 0 35px rgba(176,108,255,0.7);
+}
+
+/* ============================
+   HERO TAGLINE
+============================ */
+
+.hero-tagline {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #bfbfbf;
+    text-align: center;
+}
+
+/* ============================
+   LULS LOGO PLACEMENT
+============================ */
+
+.hero-graphic {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+/* ============================
+   MOBILE TUNING
+============================ */
+
+@media (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ======================================================
+   CYBERDESK BLOG SECTION
+====================================================== */
+.blog-section {
+    text-align: center;
+}
+
+.blog-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.blog-meta {
+    font-size: 0.85rem;
+    color: #c8a5ff;
+    margin-bottom: 8px;
+}
+
+.blog-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Small helper for section subtitles used across the template */
+.section-sub {
+    margin-top: 10px;
+    color: #cfcfcf;
+}
+
+
+/* ======================================================
+   RESPONSIVE POLISH (mobile + desktop)
+====================================================== */
+
+/* Better default text sizing */
+body { line-height: 1.55; }
+
+/* Keep layout comfortable on very wide screens */
+.section { max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+/* Inputs should never overflow */
+input, select, textarea { max-width: 100%; }
+
+/* Mobile spacing + typography */
+@media (max-width: 900px) {
+  .section { padding: 80px 6%; }
+  .header { padding: 18px 6%; }
+  .nav { gap: 18px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 70px 5%; }
+  .header { padding: 16px 5%; }
+  .mobile-nav { top: 64px; }
+  .hero { padding: 120px 5% 90px; }
+  .hero-content h1 { font-size: 2.2rem; }
+  .templates-grid, .services-grid, .downloads-grid { gap: 18px; }
+  .card, .download-card { padding: 22px; }
+  .outlet-img, .blog-img, .outlet-placeholder { height: 160px; }
+}
+
+/* Slightly larger cards on big screens */
+@media (min-width: 1200px) {
+  .templates-grid, .services-grid, .downloads-grid { gap: 32px; }
+}
+
+/* Make search input look nice on pages that only use the input without a wrapper */
+.search-box { width: 100%; max-width: 650px; margin: 0 auto 20px; display: block; }
+
+/* Footer breathing room */
+.footer { padding: 42px 8%; }
