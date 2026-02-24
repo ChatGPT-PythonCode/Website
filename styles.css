@@ -1020,3 +1020,109 @@ input, select, textarea { max-width: 100%; }
 
 /* Footer breathing room */
 .footer { padding: 42px 8%; }
+
+/* Better mobile centering for hero/buttons */
+@media (max-width: 600px) {
+  .hero{
+    padding:120px 6% 70px;
+    justify-content:center;
+    text-align:center;
+  }
+  .hero-content{
+    max-width:100%;
+    margin:0 auto;
+  }
+  .hero-content p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .hero-buttons{
+    justify-content:center;
+  }
+  .hero-buttons .btn{
+    flex:1 1 220px;
+    max-width:340px;
+    text-align:center;
+  }
+}
+
+/* Steps list + task list (Services/About) */
+.steps-list{
+  margin:14px 0 0;
+  padding-left:22px;
+  color:#cfcfcf;
+}
+.steps-list li{
+  margin:10px 0;
+  line-height:1.5;
+}
+.steps-list strong{
+  color:#ffffff;
+}
+.tasks-list{
+  margin:14px 0 0;
+  padding-left:18px;
+  color:#cfcfcf;
+}
+.tasks-list li{
+  margin:10px 0;
+  line-height:1.55;
+}
+.tiny-note{
+  font-size:0.95rem;
+  color:#cfcfcf;
+}
+
+
+
+/* Services form (Formspree) */
+.service-form{
+  margin-top:16px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+}
+.form-grid .full{
+  grid-column: 1 / -1;
+}
+.service-form label{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.service-form label span{
+  font-size:0.9rem;
+  color:#cfcfcf;
+}
+.service-form input,
+.service-form select,
+.service-form textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.35);
+  color:#ffffff;
+  outline:none;
+}
+.service-form textarea{
+  resize:vertical;
+  min-height:140px;
+}
+.service-form input::placeholder,
+.service-form textarea::placeholder{
+  color: rgba(255,255,255,0.55);
+}
+.service-form input:focus,
+.service-form select:focus,
+.service-form textarea:focus{
+  border-color: rgba(167,107,255,0.75);
+  box-shadow: 0 0 0 3px rgba(167,107,255,0.18);
+}
+@media (max-width: 720px){
+  .form-grid{ grid-template-columns: 1fr; }
+}
+
