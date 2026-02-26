@@ -132,19 +132,22 @@ function renderCyberdesk(data){
       <div class="blog-meta">${dateStr || ""}</div>
       <h3>${title}</h3>
       <p>${excerpt}</p>
-      <button class="btn secondary blog-read" type="button" data-idx="${idx}">Read</button>
+      <button class="btn secondary blog-read" type="button" data-idx="${idx}">Read post</button>
     `;
     grid.appendChild(card);
   });
 
-  // click delegation for Read buttons
-  grid.addEventListener("click", (ev)=>{
-    const btn = ev.target.closest(".blog-read");
-    if(!btn) return;
-    const idx = Number(btn.getAttribute("data-idx"));
-    const post = (window.__lulsBlogEntries || [])[idx];
-    if(post) openPostModal(post);
-  }, { once: true });
+  // click delegation for Read buttons (bind once, keep working after modal closes)
+  if(!grid.dataset.readBound){
+    grid.addEventListener("click", (ev)=>{
+      const btn = ev.target.closest(".blog-read");
+      if(!btn) return;
+      const idx = Number(btn.getAttribute("data-idx"));
+      const post = (window.__lulsBlogEntries || [])[idx];
+      if(post) openPostModal(post);
+    });
+    grid.dataset.readBound = "1";
+  }
 }
 
 // JSONP global callback
