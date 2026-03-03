@@ -1,6 +1,7 @@
 /*
   LULS Blog – in-page reader (no off-site redirects)
   Uses Blogger JSONP feed so it works on static hosting (no CORS).
+  Adds shareable, unique URLs per post via ?post=<id>
 */
 
 function lulsStripHtml(html){
@@ -48,7 +49,43 @@ function lulsSanitizeHtml(html){
   return html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
 }
 
-function openPostModal(post){
+function lulsGetPostId(entry){
+  // Prefer the numeric post id from Blogger tag id: "...post-1234567890"
+  const raw = entry?.id?.$t || "";
+  const m = /post-(\d+)/.exec(raw);
+  if(m) return m[1];
+
+  // Fallback: try to use the alternate link URL as an id
+  const linkObj = (entry?.link || []).find(l => l.rel === "alternate") || (entry?.link || [])[0];
+  return encodeURIComponent(linkObj?.href || raw || "");
+}
+
+function lulsGetRequestedPostId(){
+  const u = new URL(window.location.href);
+  return u.searchParams.get("post") || "";
+}
+
+function lulsSetUrlForPost(postId, replace = false){
+  const u = new URL(window.location.href);
+  if(postId){
+    u.searchParams.set("post", postId);
+  }else{
+    u.searchParams.delete("post");
+  }
+  const newUrl = u.pathname + (u.search ? u.search : "") + (u.hash ? u.hash : "");
+  const state = postId ? { postId } : {};
+  if(replace) history.replaceState(state, "", newUrl);
+  else history.pushState(state, "", newUrl);
+  window.__lulsCurrentPostId = postId || "";
+  window.__lulsCurrentPostUrl = window.location.href;
+}
+
+function lulsFindPostById(postId){
+  const entries = window.__lulsBlogEntries || [];
+  return entries.find(e => lulsGetPostId(e) === postId) || null;
+}
+
+function lulsOpenPost(post, opts = { pushUrl: true }){
   const modal = document.getElementById("postModal");
   const titleEl = document.getElementById("postTitle");
   const metaEl = document.getElementById("postMeta");
@@ -69,7 +106,6 @@ function openPostModal(post){
   const rawHtml = (post?.content?.$t || post?.summary?.$t || "");
   const upgraded = lulsUpgradeImagesInHtml(rawHtml, 1200);
   const safe = lulsSanitizeHtml(upgraded);
-
   contentEl.innerHTML = safe || "<p>No content available.</p>";
 
   modal.classList.add("is-open");
@@ -78,15 +114,84 @@ function openPostModal(post){
   // prevent background scroll
   document.documentElement.classList.add("modal-open");
   document.body.classList.add("modal-open");
+
+  const postId = lulsGetPostId(post);
+  window.__lulsCurrentPostId = postId;
+  window.__lulsCurrentPostUrl = window.location.href;
+
+  // Update the URL so it is shareable and unique
+  if(opts.pushUrl){
+    lulsSetUrlForPost(postId, false);
+  }else{
+    // ensure state is correct on initial open from URL
+    lulsSetUrlForPost(postId, true);
+  }
+
+  // Wire share buttons
+  lulsUpdateShareButtons(postId, titleEl.textContent);
 }
 
-function closePostModal(){
+function lulsCloseModal(opts = { popUrl: true }){
   const modal = document.getElementById("postModal");
   if(!modal) return;
+
   modal.classList.remove("is-open");
   modal.setAttribute("aria-hidden", "true");
+
   document.documentElement.classList.remove("modal-open");
   document.body.classList.remove("modal-open");
+
+  if(opts.popUrl){
+    // Return to base blog URL without adding another history entry.
+    lulsSetUrlForPost("", true);
+  }
+}
+
+function lulsUpdateShareButtons(postId, title){
+  const shareBtn = document.getElementById("postShare");
+  const copyBtn = document.getElementById("postCopyLink");
+  if(!shareBtn && !copyBtn) return;
+
+  const url = window.location.href; // already has ?post=
+
+  if(shareBtn && !shareBtn.dataset.bound){
+    shareBtn.addEventListener("click", async ()=>{
+      const shareData = { title: title || "Blog post", text: title || "Blog post", url };
+      try{
+        if(navigator.share){
+          await navigator.share(shareData);
+        }else{
+          await navigator.clipboard.writeText(url);
+          shareBtn.textContent = "Copied!";
+          setTimeout(()=> shareBtn.textContent = "Share", 1200);
+        }
+      }catch(e){
+        // ignore canceled shares
+      }
+    });
+    shareBtn.dataset.bound = "1";
+  }
+
+  if(copyBtn && !copyBtn.dataset.bound){
+    copyBtn.addEventListener("click", async ()=>{
+      try{
+        await navigator.clipboard.writeText(url);
+        copyBtn.textContent = "Copied!";
+        setTimeout(()=> copyBtn.textContent = "Copy link", 1200);
+      }catch(e){
+        // Fallback for older browsers
+        const ta = document.createElement("textarea");
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand("copy"); }catch(_){}
+        document.body.removeChild(ta);
+        copyBtn.textContent = "Copied!";
+        setTimeout(()=> copyBtn.textContent = "Copy link", 1200);
+      }
+    });
+    copyBtn.dataset.bound = "1";
+  }
 }
 
 function renderCyberdesk(data){
@@ -121,6 +226,8 @@ function renderCyberdesk(data){
     const thumbRaw = e?.media$thumbnail?.url || lulsFirstImage(html);
     const thumb = lulsUpgradeBloggerImage(thumbRaw, 1200);
 
+    const postId = lulsGetPostId(e);
+
     const card = document.createElement("div");
     card.className = "download-card blog-post-card";
     card.innerHTML = `
@@ -132,7 +239,7 @@ function renderCyberdesk(data){
       <div class="blog-meta">${dateStr || ""}</div>
       <h3>${title}</h3>
       <p>${excerpt}</p>
-      <button class="btn secondary blog-read" type="button" data-idx="${idx}">Read post</button>
+      <button class="btn secondary blog-read" type="button" data-postid="${postId}" data-idx="${idx}">Read post</button>
     `;
     grid.appendChild(card);
   });
@@ -142,11 +249,20 @@ function renderCyberdesk(data){
     grid.addEventListener("click", (ev)=>{
       const btn = ev.target.closest(".blog-read");
       if(!btn) return;
-      const idx = Number(btn.getAttribute("data-idx"));
-      const post = (window.__lulsBlogEntries || [])[idx];
-      if(post) openPostModal(post);
+      const postId = btn.getAttribute("data-postid") || "";
+      const post = postId ? lulsFindPostById(postId) : null;
+      if(post) lulsOpenPost(post, { pushUrl: true });
     });
     grid.dataset.readBound = "1";
+  }
+
+  // If the page was loaded with ?post=..., open it
+  const requested = lulsGetRequestedPostId();
+  if(requested){
+    const post = lulsFindPostById(requested);
+    if(post){
+      lulsOpenPost(post, { pushUrl: false }); // use replaceState to keep history clean
+    }
   }
 }
 
@@ -154,13 +270,33 @@ function renderCyberdesk(data){
 window.renderCyberdesk = renderCyberdesk;
 
 (function initBlogModal(){
+  // Close interactions
   document.addEventListener("click", (ev)=>{
     const close = ev.target.closest("[data-close='1']");
-    if(close) closePostModal();
+    if(close) lulsCloseModal({ popUrl: true });
   });
   document.addEventListener("keydown", (ev)=>{
-    if(ev.key === "Escape") closePostModal();
+    if(ev.key === "Escape") lulsCloseModal({ popUrl: true });
   });
+
+  // Back/forward controls
+  window.addEventListener("popstate", (ev)=>{
+    const postId = ev?.state?.postId || lulsGetRequestedPostId() || "";
+    if(postId){
+      const post = lulsFindPostById(postId);
+      if(post){
+        lulsOpenPost(post, { pushUrl: false });
+      }
+    }else{
+      lulsCloseModal({ popUrl: false });
+    }
+  });
+
+  // If someone lands directly on blog.html?post=... ensure state is set for that URL
+  const requested = lulsGetRequestedPostId();
+  if(requested){
+    history.replaceState({ postId: requested }, "", window.location.href);
+  }
 })();
 
 (function loadCyberdesk(){
