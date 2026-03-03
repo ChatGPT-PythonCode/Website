@@ -1176,3 +1176,22 @@ html.modal-open, body.modal-open{overflow:hidden;}
 .post-modal__share.secondary{background:transparent;}
 .post-modal__share:active{transform:translateY(1px);}
 @media (max-width:600px){.post-modal__actions{right:46px;top:12px;gap:8px;}.post-modal__share{padding:7px 10px;font-size:13px;}}
+
+/* Cusdis: make it full width + avoid tiny iframe causing inner scrolling */
+#post-comments {
+  width: 100%;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+#cusdis_thread {
+  width: 100%;
+}
+
+#cusdis_thread iframe {
+  width: 100% !important;
+  min-height: 680px; /* ✅ prevents the cramped scrollable iframe on mobile */
+  border: 0 !important;
+  background: transparent;
+}
