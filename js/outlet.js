@@ -1,5 +1,5 @@
 const OUTLET_URL="https://raw.githubusercontent.com/HelloSpaghettiBot/Portfolio/main/products.json";
-const PER_PAGE=10;let data=[],page=1;
+const PER_PAGE=9;let data=[],page=1;
 fetch(OUTLET_URL).then(r=>r.json()).then(d=>{data=d;render();});
 function render(){
  const q=document.getElementById("outlet-search").value.toLowerCase();
