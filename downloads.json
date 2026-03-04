@@ -1,4 +1,14 @@
 [
+    {
+    "title": "Windows Debloater",
+    "description": "Win10/11 Debloater is a lightweight Windows cleanup script designed to remove common preinstalled apps, reduce system clutter, and disable intrusive Windows suggestions.",
+    "version": "1",
+    "details": "Win10/11 Debloater is a lightweight Windows cleanup script designed to remove common preinstalled apps, reduce system clutter, and disable intrusive Windows suggestions. Use at your own discretion and always keep backups of important data.",
+    "link": "https://github.com/user-attachments/files/25744187/Debloater-Win10-Win11-main.zip",
+    "categories": [
+      "QoL"
+    ]
+  },
   {
     "title": "Weight Hack",
     "description": "Endless Online Recharge Weight Hack",
