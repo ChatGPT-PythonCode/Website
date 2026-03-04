@@ -1,5 +1,5 @@
 const D_URL = "https://raw.githubusercontent.com/ChatGPT-PythonCode/Website/refs/heads/main/downloads.json";
-const PER = 10;
+const PER = 9;
 
 let all = [];
 let page = 1;
