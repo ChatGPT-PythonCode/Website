@@ -32,9 +32,9 @@
   },
   {
     "title": "LulsProtect",
-    "description": "Required OCR engine for the captcha solver.",
-    "version": "1.4.2",
-    "details": "Windows desktop security utility built in Python and distributed as a standalone .exe. It provides on-demand scanning, real-time monitoring, USB scanning, basic network alerts, quarantine, and rollback — all without requiring Python to be installed on the target system.",
+    "description": "Prrovides on-demand scanning, real-time monitoring, USB scanning, basic network alerts, quarantine, and rollback.",
+    "version": "0.0.2",
+    "details": "Windows desktop security utility built in Python.",
     "link": "https://github.com/ChatGPT-PythonCode/LulsProtect/releases/tag/virusscanner",
     "categories": [
       "Network",
