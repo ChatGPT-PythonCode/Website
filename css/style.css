@@ -1371,8 +1371,10 @@ html.modal-open, body.modal-open{overflow:hidden;}
   box-sizing: border-box;
 }
 
-#check
 
+/* ======================================================
+   #check
+====================================================== */
 .hero-bg {
   background:
     radial-gradient(circle at 40% 20%, rgba(155,92,255,.18), transparent 60%),
