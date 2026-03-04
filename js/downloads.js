@@ -1,4 +1,4 @@
-const D_URL = "https://raw.githubusercontent.com/EOBots/EOBot/main/downloads.json";
+const D_URL = "https://raw.githubusercontent.com/ChatGPT-PythonCode/Website/refs/heads/main/downloads.json";
 const PER = 10;
 
 let all = [];
