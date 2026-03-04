@@ -10,13 +10,13 @@
     ]
   },
   {
-    "title": "EOProxy Tool",
-    "description": "Network packet analyzer for Endless Online by Abuse built off Exile EOProxy.",
-    "version": "2.3.1",
-    "details": "Network packet analyzer for Endless Online by Abuse built off Exile EOProxy.",
-    "link": "https://mega.nz/file/FAE33JYS#yT6G0osrBz6sX9Obel1jY7N1NctXSEylhIN7QdqO_9U",
+    "title": "NALauncher",
+    "description": "New Aeven Launcher written in python..",
+    "version": "0.0.1",
+    "details": "A custom laucnher for Aeven.xyz.",
+    "link": "https://github.com/ChatGPT-PythonCode/Custom-New-Aeven-Launcher/releases/tag/NALauncher",
     "categories": [
-      "Networking"
+      "Gaming"
     ]
   },
   {
@@ -31,14 +31,14 @@
     ]
   },
   {
-    "title": "Tesseract For Captcha Solver",
+    "title": "LulsProtect",
     "description": "Required OCR engine for the captcha solver.",
     "version": "1.4.2",
-    "details": "You must download Tesseract for the captcha solver to run.",
-    "link": "https://github.com/tesseract-ocr/tesseract/releases/download/5.5.0/tesseract-ocr-w64-setup-5.5.0.20241111.exe",
+    "details": "Windows desktop security utility built in Python and distributed as a standalone .exe. It provides on-demand scanning, real-time monitoring, USB scanning, basic network alerts, quarantine, and rollback — all without requiring Python to be installed on the target system.",
+    "link": "https://github.com/ChatGPT-PythonCode/LulsProtect/releases/tag/virusscanner",
     "categories": [
-      "OCR",
-      "Prerequisite"
+      "Network",
+      "Virus Removal"
     ]
   },
   {
