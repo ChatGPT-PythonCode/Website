@@ -120,20 +120,9 @@ function render(){
   slice.forEach(item=>{
     const card = document.createElement("div");
     card.className = "download-card";
-    card.tabIndex = 0;
-    card.setAttribute("role","button");
-    card.setAttribute("aria-label", `Open details for ${item.title}`);
-    card.addEventListener("click", ()=>openModal(item));
-    card.addEventListener("keydown", (e)=>{
-      if(e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(item); }
-    });
 
     const h = document.createElement("h3");
     h.textContent = item.title;
-
-    const p = document.createElement("p");
-    p.className = "desc";
-    p.textContent = item.description || "";
 
     const cats = document.createElement("p");
     cats.className = "cats";
@@ -162,7 +151,6 @@ function render(){
     actions.appendChild(more);
 
     card.appendChild(h);
-    card.appendChild(p);
     card.appendChild(cats);
     card.appendChild(actions);
 
