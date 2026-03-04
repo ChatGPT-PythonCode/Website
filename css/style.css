@@ -1370,3 +1370,48 @@ html.modal-open, body.modal-open{overflow:hidden;}
 .post-modal__content {
   box-sizing: border-box;
 }
+
+#check
+
+.hero-bg {
+  background:
+    radial-gradient(circle at 40% 20%, rgba(155,92,255,.18), transparent 60%),
+    radial-gradient(circle at 70% 60%, rgba(110,60,255,.14), transparent 65%),
+    #0E0E13;
+
+  animation: heroDrift 22s linear infinite alternate;
+}
+.luls-logo {
+  color: #c08bff;
+
+  text-shadow:
+    0 0 6px rgba(155,92,255,.18),
+    0 0 12px rgba(155,92,255,.12),
+    0 0 24px rgba(155,92,255,.08);
+
+  animation: lulsBreathingGlow 6s ease-in-out infinite;
+}
+@keyframes lulsBreathingGlow {
+
+  0% {
+    text-shadow:
+      0 0 6px rgba(155,92,255,.16),
+      0 0 12px rgba(155,92,255,.10),
+      0 0 24px rgba(155,92,255,.06);
+  }
+
+  50% {
+    text-shadow:
+      0 0 8px rgba(155,92,255,.20),
+      0 0 16px rgba(155,92,255,.14),
+      0 0 28px rgba(155,92,255,.08);
+  }
+
+  100% {
+    text-shadow:
+      0 0 6px rgba(155,92,255,.16),
+      0 0 12px rgba(155,92,255,.10),
+      0 0 24px rgba(155,92,255,.06);
+  }
+
+}
