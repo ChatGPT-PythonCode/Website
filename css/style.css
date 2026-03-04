@@ -1295,3 +1295,78 @@ html.modal-open, body.modal-open{overflow:hidden;}
 .no-scroll {
     overflow: hidden;
 }
+/* =========================================================
+   BLOG MODAL + CUSDIS COMMENTS FIXES
+   Paste at bottom of your main stylesheet (css/style.css)
+   ========================================================= */
+
+/* Make sure modal content is the ONLY scroll area (prevents weird nested scroll) */
+.post-modal__panel {
+  max-height: 92vh;
+  overflow: hidden;
+}
+
+.post-modal__content {
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 24px;
+}
+
+/* Comments section spacing + full-width */
+#post-comments,
+.post-comments {
+  width: 100%;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Ensure cusdis container doesn't shrink */
+#cusdis_thread {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Cusdis renders inside an iframe: give it room so it doesn't become a tiny scrollable box */
+#cusdis_thread iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 760px; /* ✅ key fix: gives comments enough height on mobile */
+  border: 0 !important;
+  background: transparent !important;
+  display: block;
+}
+
+/* Desktop can be shorter */
+@media (min-width: 900px) {
+  #cusdis_thread iframe {
+    min-height: 620px;
+  }
+}
+
+/* Very small phones: still roomy */
+@media (max-width: 420px) {
+  #cusdis_thread iframe {
+    min-height: 820px;
+  }
+}
+
+/* Prevent your buttons from overlapping the comment form visually */
+.post-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 16px 0 8px;
+}
+
+.post-actions .btn {
+  flex: 1 1 140px;
+}
+
+/* Optional: if your modal has rounded corners & shadows, keep cusdis visually aligned */
+.post-modal__panel,
+.post-modal__content {
+  box-sizing: border-box;
+}
