@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>Services</title>
+  <title>Site Directory</title>
 
   <link rel="stylesheet" href="/css/style.css?v=3">
   <link rel="stylesheet" href="css/style.css?v=3">
@@ -23,12 +23,11 @@
 
     <nav class="nav">
       <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="outlet.html">Digital Outlet</a>
-      <a href="downloads.html">Downloads</a>
       <a href="blog.html">Blog</a>
+      <a href="outlet.html">Store</a>
+      <a href="downloads.html">Downloads</a>
+      <a href="https://generative.luls.lol/" target="_blank" rel="noopener">Music</a>
       <a href="about.html">About</a>
-      <a href="https://www.linkedin.com/in/kody-t-789445387?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener">LinkedIn</a>
     </nav>
 
     <div aria-label="Open menu" class="hamburger" onclick="toggleMenu()" role="button" tabindex="0">
@@ -39,115 +38,38 @@
   <div class="mobile-nav" id="mobile-nav"></div>
 
   <section class="section">
-    <h2>Services</h2>
-    <p class="section-sub">Pick what you need. I’ll keep it simple and walk you through it.</p>
+    <h2>Site Directory</h2>
+    <p class="section-sub">This page is no longer the focus. The site now centers on content, storefronts, downloads, and music.</p>
 
     <div class="downloads-grid" style="margin-top:28px;">
       <div class="download-card">
-        <h3>Remote Tech Support</h3>
-        <p>Websites, email, hosting, setup issues, “why won’t this work?” — we troubleshoot live, step-by-step.</p>
-        <div class="cats">Remote support • Troubleshooting</div>
-        <a class="btn primary" href="mailto:zerobytewaste@proton.me">Email me</a>
+        <h3>Go to the Blog</h3>
+        <p>Read updates, posts, and writeups.</p>
+        <div class="cats">Articles • Updates</div>
+        <a class="btn secondary" href="blog.html">Open blog</a>
       </div>
 
       <div class="download-card">
-        <h3>Domain + Hosting Setup</h3>
-        <p>I’ll walk you through buying a domain, choosing a host, connecting DNS, and getting your site online.</p>
-        <div class="cats">Domains • Hosting • DNS</div>
-        <a class="btn secondary" href="#request"">Start setup</a>
+        <h3>Go to the Store</h3>
+        <p>Browse the digital outlet and storefront items.</p>
+        <div class="cats">Products • Storefront</div>
+        <a class="btn secondary" href="outlet.html">Visit store</a>
       </div>
 
       <div class="download-card">
-        <h3>Web Templates</h3>
-        <p>Clean, mobile-friendly templates (and help launching them) — so you’re not stuck later.</p>
-        <div class="cats">Templates • Mobile-friendly</div>
-        <a class="btn secondary" href="#request"">Request a template</a>
+        <h3>Go to Downloads</h3>
+        <p>Find tools, files, and releases.</p>
+        <div class="cats">Downloads • Releases</div>
+        <a class="btn secondary" href="downloads.html">View downloads</a>
       </div>
 
       <div class="download-card">
-        <h3>Technical Training</h3>
-        <p>1-on-1 or small-team training in plain English. Practical steps, repeatable habits.</p>
-        <div class="cats">Training • Coaching</div>
-        <a class="btn secondary" href="#request"">Ask about training</a>
+        <h3>Go to Music</h3>
+        <p>Open the Generative Records music page.</p>
+        <div class="cats">Music • Generative Records</div>
+        <a class="btn secondary" href="https://generative.luls.lol/" target="_blank" rel="noopener">Open music</a>
       </div>
     </div>
-
-    <div class="download-card" style="margin-top:28px;">
-      <h3>Common “please save me” tasks</h3>
-      <ul class="tasks-list">
-        <li>Fixing broken site layouts / mobile issues</li>
-        <li>Domain + DNS not pointing to the right place</li>
-        <li>Email setup (custom domains, forwarding, deliverability basics)</li>
-        <li>Hosting confusion (what plan do I need? what dashboard?)</li>
-        <li>“My site is live but not loading right” / mixed content / SSL</li>
-        <li>Basic performance cleanup (images, caching, simple wins)</li>
-      </ul>
-    </div>
-
-    
-    <div class="download-card" id="request" style="margin-top:28px;">
-      <h3>Request help</h3>
-      <p class="section-sub" style="margin-top:8px;">Fill this out and I’ll reply with next steps.</p>
-
-      <form class="service-form" action="https://formspree.io/f/mdkbagwa" method="POST">
-        <input type="hidden" name="_subject" value="LULS — Services request" />
-        <input type="hidden" name="source" value="luls.lol/services" />
-
-        <div class="form-grid">
-          <label>
-            <span>Your name</span>
-            <input name="name" type="text" autocomplete="name" placeholder="Your name" required>
-          </label>
-
-          <label>
-            <span>Your email</span>
-            <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-          </label>
-
-          <label class="full">
-            <span>What do you need?</span>
-            <select name="service" id="serviceSelect" required>
-              <option value="" selected disabled>Select a service…</option>
-              <option>Remote Tech Support</option>
-              <option>Domain + Hosting Setup</option>
-              <option>Web Templates</option>
-              <option>Technical Training</option>
-              <option>Not sure — explain below</option>
-            </select>
-          </label>
-
-          <label class="full">
-            <span>Describe the issue / goal</span>
-            <textarea name="message" rows="6" placeholder="What’s the goal? What’s broken? Any error messages? Link/domain/host if relevant…" required></textarea>
-          </label>
-
-          <label>
-            <span>Domain (if you have one)</span>
-            <input name="domain" type="text" placeholder="example.com">
-          </label>
-
-          <label>
-            <span>Hosting / platform</span>
-            <input name="hosting" type="text" placeholder="GitHub Pages, Bluehost, Squarespace, WordPress…">
-          </label>
-
-          <label class="full">
-            <span>Timeline / urgency</span>
-            <input name="timeline" type="text" placeholder="Today / this week / whenever — just let me know">
-          </label>
-        </div>
-
-        <div class="hero-buttons" style="margin-top:16px;">
-          <button class="btn primary" type="submit">Send request</button>
-          <a class="btn secondary" href="mailto:zerobytewaste@proton.me">Email instead</a>
-        </div>
-
-        <p class="tiny-note" style="margin-top:12px;">
-          Tip: Include a link, screenshots, and what you’ve already tried — it speeds everything up.
-        </p>
-      </form>
-    </div>
-
   </section>
 
   <footer class="footer">© 2025 luls.lol</footer>
