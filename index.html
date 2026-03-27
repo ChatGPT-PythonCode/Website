@@ -46,6 +46,555 @@
   <h2>Explore <span>luls.lol</span></h2>
   <p class="section-sub">Choose where you want to go.</p>
 
+<!--
+  DROP-IN HOMEPAGE MAIN SECTION FOR luls.lol
+  Put this inside your homepage <main> area.
+  It is built as an embeddable section, not a full standalone page.
+--><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet"><style>
+  .luls-project-hub {
+    --hub-bg-0: #04050b;
+    --hub-bg-1: #0a1020;
+    --hub-bg-2: #11182c;
+    --hub-cyan: #59f2ff;
+    --hub-pink: #ff43c6;
+    --hub-violet: #a166ff;
+    --hub-blue: #67a0ff;
+    --hub-text: #eef8ff;
+    --hub-border: rgba(126, 233, 255, 0.16);
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    border: 1px solid rgba(126, 233, 255, 0.12);
+    background:
+      radial-gradient(circle at 15% 15%, rgba(89,242,255,0.10), transparent 22%),
+      radial-gradient(circle at 85% 18%, rgba(255,67,198,0.10), transparent 22%),
+      radial-gradient(circle at 50% 80%, rgba(161,102,255,0.12), transparent 26%),
+      linear-gradient(180deg, var(--hub-bg-0), var(--hub-bg-1) 52%, var(--hub-bg-2));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 16px 60px rgba(0,0,0,0.34),
+      0 0 40px rgba(89,242,255,0.06);
+    isolation: isolate;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .luls-project-hub * {
+    box-sizing: border-box;
+  }
+
+  .luls-project-hub .hub-arcade {
+    font-family: 'Press Start 2P', system-ui, monospace;
+  }
+
+  .luls-project-hub .hub-grid,
+  .luls-project-hub .hub-grid::before,
+  .luls-project-hub .hub-scanlines,
+  .luls-project-hub .hub-beams,
+  .luls-project-hub .hub-beams::before,
+  .luls-project-hub .hub-orbs,
+  .luls-project-hub .hub-orbs::before,
+  .luls-project-hub .hub-orbs::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .luls-project-hub .hub-grid {
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .luls-project-hub .hub-grid::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 42%;
+    bottom: -42%;
+    background-image:
+      linear-gradient(rgba(89,242,255,0.13) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(89,242,255,0.13) 1px, transparent 1px);
+    background-size: 60px 60px;
+    transform: perspective(900px) rotateX(72deg);
+    transform-origin: center top;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.16), rgba(0,0,0,1) 20%, rgba(0,0,0,1));
+    animation: hub-grid-move 8s linear infinite;
+    opacity: 0.75;
+  }
+
+  .luls-project-hub .hub-beams {
+    z-index: 0;
+    overflow: hidden;
+    mix-blend-mode: screen;
+    opacity: 0.85;
+  }
+
+  .luls-project-hub .hub-beams::before,
+  .luls-project-hub .hub-beams::after {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background:
+      linear-gradient(125deg, transparent 30%, rgba(89,242,255,0.08) 42%, transparent 54%),
+      linear-gradient(305deg, transparent 35%, rgba(255,67,198,0.08) 47%, transparent 59%);
+    filter: blur(8px);
+  }
+
+  .luls-project-hub .hub-beams::before {
+    animation: hub-beam-sweep 12s linear infinite;
+  }
+
+  .luls-project-hub .hub-beams::after {
+    animation: hub-beam-sweep-reverse 16s linear infinite;
+  }
+
+  .luls-project-hub .hub-orbs {
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .luls-project-hub .hub-orbs::before,
+  .luls-project-hub .hub-orbs::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(18px);
+    opacity: 0.24;
+  }
+
+  .luls-project-hub .hub-orbs::before {
+    width: 16rem;
+    height: 16rem;
+    left: 4%;
+    top: 6%;
+    background: rgba(89,242,255,0.22);
+    animation: hub-drift-a 14s ease-in-out infinite;
+  }
+
+  .luls-project-hub .hub-orbs::after {
+    width: 20rem;
+    height: 20rem;
+    right: 5%;
+    top: 8%;
+    background: rgba(255,67,198,0.16);
+    animation: hub-drift-b 18s ease-in-out infinite;
+  }
+
+  .luls-project-hub .hub-scanlines {
+    z-index: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 2px,
+      transparent 4px
+    );
+    opacity: 0.16;
+    mix-blend-mode: screen;
+    animation: hub-scan-drift 10s linear infinite;
+  }
+
+  .luls-project-hub .hub-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .luls-project-hub .hub-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(89,242,255,0.9);
+    box-shadow: 0 0 12px rgba(89,242,255,0.9), 0 0 22px rgba(89,242,255,0.34);
+    animation: hub-float-up linear infinite;
+  }
+
+  .luls-project-hub .hub-particle.pink {
+    background: rgba(255,67,198,0.85);
+    box-shadow: 0 0 12px rgba(255,67,198,0.85), 0 0 22px rgba(255,67,198,0.3);
+  }
+
+  .luls-project-hub .hub-inner {
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+  }
+
+  .luls-project-hub .hub-topline {
+    margin: 0 0 18px;
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: rgba(194, 236, 255, 0.82);
+  }
+
+  .luls-project-hub .hub-title {
+    margin: 0;
+    color: #fff;
+    line-height: 1.18;
+    text-shadow:
+      0 0 8px rgba(89,242,255,0.45),
+      0 0 18px rgba(89,242,255,0.28),
+      0 0 38px rgba(161,102,255,0.18);
+    animation: hub-title-pulse 2.8s ease-in-out infinite;
+  }
+
+  .luls-project-hub .hub-grid-layout {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .luls-project-hub .hub-card {
+    position: relative;
+    display: block;
+    min-height: 190px;
+    padding: 24px;
+    border-radius: 26px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(13, 20, 40, 0.86), rgba(7, 10, 20, 0.9));
+    border: 1px solid rgba(126,233,255,0.14);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 14px 40px rgba(0,0,0,0.30);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    outline: none;
+    isolation: isolate;
+  }
+
+  .luls-project-hub .hub-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at top left, rgba(89,242,255,0.14), transparent 36%),
+      radial-gradient(circle at bottom right, rgba(255,67,198,0.10), transparent 34%);
+    z-index: -2;
+  }
+
+  .luls-project-hub .hub-card::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -30%;
+    width: 55%;
+    height: 320%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.16), transparent);
+    transform: rotate(18deg);
+    opacity: 0;
+    transition: opacity 220ms ease;
+    z-index: -1;
+  }
+
+  .luls-project-hub .hub-card:hover,
+  .luls-project-hub .hub-card:focus-visible {
+    transform: translateY(-7px) scale(1.012);
+    border-color: rgba(89,242,255,0.42);
+    box-shadow:
+      0 0 22px rgba(89,242,255,0.18),
+      0 0 48px rgba(161,102,255,0.12),
+      0 18px 56px rgba(0,0,0,0.46);
+  }
+
+  .luls-project-hub .hub-card:hover::after,
+  .luls-project-hub .hub-card:focus-visible::after {
+    opacity: 1;
+    animation: hub-sheen 1.15s ease;
+  }
+
+  .luls-project-hub .hub-card:hover .hub-card-number,
+  .luls-project-hub .hub-card:focus-visible .hub-card-number,
+  .luls-project-hub .hub-card:hover .hub-launch,
+  .luls-project-hub .hub-card:focus-visible .hub-launch {
+    border-color: rgba(89,242,255,0.38);
+    box-shadow: 0 0 16px rgba(89,242,255,0.20);
+  }
+
+  .luls-project-hub .hub-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .luls-project-hub .hub-card-number {
+    display: inline-flex;
+    border-radius: 999px;
+    border: 1px solid rgba(126,233,255,0.16);
+    background: rgba(89,242,255,0.08);
+    padding: 8px 12px;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(220, 248, 255, 0.92);
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+  }
+
+  .luls-project-hub .hub-project-title {
+    margin: 18px 0 0;
+    font-size: clamp(1.45rem, 2.6vw, 2.2rem);
+    line-height: 1.12;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .luls-project-hub .hub-project-sub {
+    margin: 10px 0 0;
+    font-size: 11px;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(183, 228, 255, 0.66);
+  }
+
+  .luls-project-hub .hub-card-bottom {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .luls-project-hub .hub-url {
+    font-size: 0.98rem;
+    color: var(--hub-cyan);
+    text-shadow: 0 0 10px rgba(89,242,255,0.22);
+    word-break: break-word;
+  }
+
+  .luls-project-hub .hub-launch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(126,233,255,0.16);
+    background: rgba(89,242,255,0.08);
+    padding: 11px 15px;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(229,250,255,0.95);
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+  }
+
+  .luls-project-hub .hub-launch-arrow {
+    display: inline-block;
+    transition: transform 220ms ease;
+  }
+
+  .luls-project-hub .hub-card:hover .hub-launch-arrow,
+  .luls-project-hub .hub-card:focus-visible .hub-launch-arrow {
+    transform: translateX(3px);
+  }
+
+  .luls-project-hub .hub-corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: rgba(89,242,255,0.62);
+    opacity: 0.88;
+    z-index: 1;
+  }
+
+  .luls-project-hub .hub-corner.tl { top: 14px; left: 14px; border-top: 2px solid; border-left: 2px solid; }
+  .luls-project-hub .hub-corner.tr { top: 14px; right: 14px; border-top: 2px solid; border-right: 2px solid; }
+  .luls-project-hub .hub-corner.bl { bottom: 14px; left: 14px; border-bottom: 2px solid; border-left: 2px solid; }
+  .luls-project-hub .hub-corner.br { bottom: 14px; right: 14px; border-bottom: 2px solid; border-right: 2px solid; }
+
+  @keyframes hub-grid-move {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 0 60px, 60px 0; }
+  }
+
+  @keyframes hub-beam-sweep {
+    0% { transform: translate3d(-4%, -2%, 0) scale(1.04); }
+    50% { transform: translate3d(4%, 2%, 0) scale(1.08); }
+    100% { transform: translate3d(-4%, -2%, 0) scale(1.04); }
+  }
+
+  @keyframes hub-beam-sweep-reverse {
+    0% { transform: translate3d(5%, 4%, 0) scale(1.08); }
+    50% { transform: translate3d(-3%, -3%, 0) scale(1.04); }
+    100% { transform: translate3d(5%, 4%, 0) scale(1.08); }
+  }
+
+  @keyframes hub-scan-drift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(8px); }
+  }
+
+  @keyframes hub-title-pulse {
+    0%, 100% {
+      text-shadow:
+        0 0 8px rgba(89,242,255,0.45),
+        0 0 18px rgba(89,242,255,0.28),
+        0 0 38px rgba(161,102,255,0.18);
+    }
+    50% {
+      text-shadow:
+        0 0 14px rgba(89,242,255,0.78),
+        0 0 28px rgba(89,242,255,0.44),
+        0 0 54px rgba(255,67,198,0.20);
+    }
+  }
+
+  @keyframes hub-drift-a {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(24px, -16px, 0) scale(1.08); }
+  }
+
+  @keyframes hub-drift-b {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(-22px, 20px, 0) scale(1.05); }
+  }
+
+  @keyframes hub-float-up {
+    0% {
+      transform: translateY(110%) scale(0.8);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 0.85; }
+    100% {
+      transform: translateY(-12%) scale(1.14);
+      opacity: 0;
+    }
+  }
+
+  @keyframes hub-sheen {
+    0% { transform: translateX(0) rotate(18deg); }
+    100% { transform: translateX(240%) rotate(18deg); }
+  }
+
+  @media (max-width: 920px) {
+    .luls-project-hub .hub-grid-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .luls-project-hub {
+      border-radius: 24px;
+    }
+
+    .luls-project-hub .hub-inner {
+      padding: 18px;
+    }
+
+    .luls-project-hub .hub-topline {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+    }
+
+    .luls-project-hub .hub-project-title {
+      font-size: 1.35rem;
+    }
+
+    .luls-project-hub .hub-card {
+      min-height: 170px;
+      padding: 20px;
+      border-radius: 22px;
+    }
+
+    .luls-project-hub .hub-card-bottom {
+      align-items: stretch;
+    }
+
+    .luls-project-hub .hub-launch {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .luls-project-hub *,
+    .luls-project-hub *::before,
+    .luls-project-hub *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style><section class="luls-project-hub my-8 md:my-12">
+  <div class="hub-grid" aria-hidden="true"></div>
+  <div class="hub-beams" aria-hidden="true"></div>
+  <div class="hub-orbs" aria-hidden="true"></div>
+  <div class="hub-particles" aria-hidden="true">
+    <span class="hub-particle" style="left: 6%; animation-duration: 11s; animation-delay: -2s;"></span>
+    <span class="hub-particle pink" style="left: 14%; animation-duration: 14s; animation-delay: -6s;"></span>
+    <span class="hub-particle" style="left: 24%; animation-duration: 12s; animation-delay: -4s;"></span>
+    <span class="hub-particle" style="left: 33%; animation-duration: 16s; animation-delay: -8s;"></span>
+    <span class="hub-particle pink" style="left: 43%; animation-duration: 10s; animation-delay: -1s;"></span>
+    <span class="hub-particle" style="left: 54%; animation-duration: 15s; animation-delay: -9s;"></span>
+    <span class="hub-particle pink" style="left: 63%; animation-duration: 13s; animation-delay: -5s;"></span>
+    <span class="hub-particle" style="left: 73%; animation-duration: 11s; animation-delay: -3s;"></span>
+    <span class="hub-particle pink" style="left: 83%; animation-duration: 17s; animation-delay: -7s;"></span>
+    <span class="hub-particle" style="left: 93%; animation-duration: 10s; animation-delay: -4s;"></span>
+  </div>
+  <div class="hub-scanlines" aria-hidden="true"></div><span class="hub-corner tl"></span> <span class="hub-corner tr"></span> <span class="hub-corner bl"></span> <span class="hub-corner br"></span>
+
+  <div class="hub-inner">
+    <p class="hub-topline">Select Project</p>
+    <h2 class="hub-title hub-arcade text-[clamp(1.8rem,4vw,4rem)]">LULS PORTAL</h2><div class="hub-grid-layout">
+  <a href="https://generative.luls.lol" target="_blank" rel="noopener noreferrer" class="hub-card" aria-label="Open Generative Music">
+    <div class="hub-card-top">
+      <span class="hub-card-number">Project 01</span>
+    </div>
+    <h3 class="hub-project-title">Generative Music</h3>
+    <div class="hub-card-bottom">
+      <span class="hub-url">generative.luls.lol</span>
+      <span class="hub-launch"><span>Launch</span><span class="hub-launch-arrow">→</span></span>
+    </div>
+  </a>
+
+  <a href="https://monsters.luls.lol" target="_blank" rel="noopener noreferrer" class="hub-card" aria-label="Open Badly Drawn Monsters">
+    <div class="hub-card-top">
+      <span class="hub-card-number">Project 02</span>
+    </div>
+    <h3 class="hub-project-title">Badly Drawn Monsters</h3>
+    <div class="hub-card-bottom">
+      <span class="hub-url">monsters.luls.lol</span>
+      <span class="hub-launch"><span>Launch</span><span class="hub-launch-arrow">→</span></span>
+    </div>
+  </a>
+
+  <a href="https://tcg.luls.lol" target="_blank" rel="noopener noreferrer" class="hub-card" aria-label="Open BDC TCG">
+    <div class="hub-card-top">
+      <span class="hub-card-number">Project 03</span>
+    </div>
+    <h3 class="hub-project-title">BDC TCG</h3>
+    <div class="hub-card-bottom">
+      <span class="hub-url">tcg.luls.lol</span>
+      <span class="hub-launch"><span>Launch</span><span class="hub-launch-arrow">→</span></span>
+    </div>
+  </a>
+
+  <a href="https://er.luls.lol" target="_blank" rel="noopener noreferrer" class="hub-card" aria-label="Open Endless Rebirth">
+    <div class="hub-card-top">
+      <span class="hub-card-number">Project 04</span>
+    </div>
+    <h3 class="hub-project-title">Endless Rebirth</h3>
+    <p class="hub-project-sub">Private Server</p>
+    <div class="hub-card-bottom">
+      <span class="hub-url">er.luls.lol</span>
+      <span class="hub-launch"><span>Launch</span><span class="hub-launch-arrow">→</span></span>
+    </div>
+  </a>
+</div>
+
+  </div>
+</section>
+
   <div class="downloads-grid" style="margin-top:28px;">
     <div class="download-card">
       <h3>Blog</h3>
