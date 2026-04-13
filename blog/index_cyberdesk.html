@@ -184,12 +184,12 @@
 <!-- CYBERDESK BLOG -->
 <section id="cyberdesk" class="section blog-section">
     <h2>Cyberdesk <span>Blog</span></h2>
-    <p class="section-sub">Latest posts from https://uncscyberdesk.blogspot.com/</p>
+    <p class="section-sub">Latest posts from https://eoguides.com/</p>
 
     <div id="cyberdesk-grid" class="templates-grid"></div>
 
     <div class="blog-actions">
-        <a class="btn secondary" href="https://uncscyberdesk.blogspot.com/" target="_blank" rel="noopener">View the full blog</a>
+        <a class="btn secondary" href="https://eoguides.com/" target="_blank" rel="noopener">View the full blog</a>
     </div>
 </section>
 
@@ -475,7 +475,7 @@ loadDownloads();
 /*
   Uses Blogger's JSON-in-script (JSONP) feed so this works on a static site without CORS issues.
   You can tweak max-results, or filter by label:
-  https://uncscyberdesk.blogspot.com/feeds/posts/default/-/LABEL?alt=json-in-script&callback=renderCyberdesk
+  https://eoguides.com/feeds/posts/default/-/LABEL?alt=json-in-script&callback=renderCyberdesk
 */
 function cyberdeskStripHtml(html){
   const div = document.createElement("div");
@@ -503,7 +503,7 @@ function renderCyberdesk(data){
   entries.forEach(e => {
     const title = (e.title && e.title.$t) ? e.title.$t : "Untitled";
     const linkObj = (e.link || []).find(l => l.rel === "alternate") || (e.link || [])[0];
-    const url = linkObj && linkObj.href ? linkObj.href : "https://uncscyberdesk.blogspot.com/";
+    const url = linkObj && linkObj.href ? linkObj.href : "https://eoguides.com/";
     const published = (e.published && e.published.$t) ? e.published.$t : ((e.updated && e.updated.$t) ? e.updated.$t : "");
     let dateStr = "";
     try {
@@ -520,7 +520,7 @@ function renderCyberdesk(data){
     card.className = "download-card blog-post-card";
     card.innerHTML = `
       ${thumb ? `<img class="blog-img" src="${thumb}" alt="">` : `<div class="outlet-placeholder"></div>`}
-      <div class="blog-meta">${dateStr ? dateStr + " • " : ""}uncscyberdesk</div>
+      <div class="blog-meta">${dateStr ? dateStr + " • " : ""}eoguides</div>
       <h3>${title}</h3>
       <p>${excerpt}</p>
       <a class="btn secondary" href="${url}" target="_blank" rel="noopener">Read post</a>
@@ -532,7 +532,7 @@ function renderCyberdesk(data){
 // Load JSONP feed (bypasses CORS)
 (function loadCyberdesk(){
   const s = document.createElement("script");
-  s.src = "https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=9";
+  s.src = "https://eoguides.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=9";
   document.body.appendChild(s);
 })();
 </script>
