@@ -1,8 +1,8 @@
 window.LULS_CONFIG = Object.assign(
   {
     // Change these two lines if your active Blogger address is different.
-    bloggerSiteUrl: "https://freeaudiosounds.blogspot.com/",
-    bloggerFeedBase: "https://freeaudiosounds.blogspot.com/feeds/posts/default",
+    bloggerSiteUrl: "https://eoguides.com/",
+    bloggerFeedBase: "https://eoguides.com/feeds/posts/default",
 
     siteName: "LULS Blog",
     tcgUrl: "https://tcg.luls.lol/",
