@@ -8,7 +8,7 @@
 */
 
 const BLOG_FEED_URL =
-  "https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=12";
+  "https://eoguides.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=12";
 
 // ===== Helpers =====
 function stripHtml(html) {
