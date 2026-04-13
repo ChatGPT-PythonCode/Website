@@ -4,7 +4,7 @@ window.LULS_CONFIG = Object.assign(
     bloggerSiteUrl: "https://eoguides.com/",
     bloggerFeedBase: "https://eoguides.com/feeds/posts/default",
 
-    siteName: "LULS Blog",
+    siteName: "EO Guides",
     tcgUrl: "https://tcg.luls.lol/",
     musicUrl: "https://music.luls.lol/",
   },
