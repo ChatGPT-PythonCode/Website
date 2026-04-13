@@ -7,8 +7,10 @@
   - Cusdis comments per post thread (dark theme)
 */
 
-const BLOG_FEED_URL =
-  "https://uncscyberdesk.blogspot.com/feeds/posts/default?alt=json-in-script&callback=renderCyberdesk&max-results=12";
+const BLOG_CONFIG = window.LULS_CONFIG || {};
+const BLOG_FEED_BASE = BLOG_CONFIG.bloggerFeedBase || "https://freeaudiosounds.blogspot.com/feeds/posts/default";
+const BLOG_SITE_URL = BLOG_CONFIG.bloggerSiteUrl || "https://freeaudiosounds.blogspot.com/";
+const BLOG_FEED_URL = `${BLOG_FEED_BASE}?alt=json-in-script&callback=renderCyberdesk&max-results=12`;
 
 // ===== Helpers =====
 function stripHtml(html) {
