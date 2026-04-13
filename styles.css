@@ -1282,27 +1282,10 @@ html.modal-open, body.modal-open{overflow:hidden;}
     overflow: hidden;
 }
 
-/* Blog modal mobile fullscreen */
+/* Blog modal mobile */
 @media (max-width: 768px){
-  .post-modal{
-    padding: 0;
-  }
-  .post-modal__panel{
-    width: 100%;
-    max-width: none;
-    min-height: 100dvh;
-    margin: 0;
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    padding: calc(14px + env(safe-area-inset-top, 0px)) 14px calc(22px + env(safe-area-inset-bottom, 0px));
-  }
-  .post-modal__close{
-    top: env(safe-area-inset-top, 0px);
-    z-index: 5;
-  }
-  .post-actions{
-    flex-wrap: wrap;
-  }
+  .post-modal{padding:8px;}
+  .post-modal__panel{width:calc(100vw - 16px);max-height:calc(100vh - 16px);padding:14px 14px 18px;border-radius:16px;}
+  .post-modal__close{top:0;z-index:5;}
+  .post-actions{flex-wrap:wrap;}
 }

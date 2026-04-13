@@ -104,6 +104,8 @@ function openModal() {
   m.classList.add("is-open");
   m.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
+  document.documentElement.classList.add("modal-open");
 }
 
 function closeModal({ updateUrl = true } = {}) {
@@ -113,6 +115,8 @@ function closeModal({ updateUrl = true } = {}) {
   m.classList.remove("is-open");
   m.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  document.body.classList.remove("modal-open");
+  document.documentElement.classList.remove("modal-open");
 
   if (updateUrl) {
     const url = new URL(window.location.href);
